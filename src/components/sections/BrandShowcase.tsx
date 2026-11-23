@@ -5,46 +5,36 @@ import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
+  ArrowRight,
+  Mouse,
   Droplets,
   ShieldCheck,
   Heart,
-  Sparkles,
   Smartphone,
   Zap,
   Award,
-  ArrowRight,
-  Mouse,
 } from "lucide-react";
 
-interface BrandItem {
+interface BrandCard {
   id: string;
   name: string;
-  trademark?: string;
   tagline?: string;
   subtitle: string;
   color: string;
-  image: string;
-  features: {
-    icon: React.ReactNode;
-    title: string;
-  }[];
+  cardImage: string;
+  isWide?: boolean;
   ctaText: string;
   ctaLink: string;
 }
 
-const BRANDS_DATA: BrandItem[] = [
+const BRANDS_LIST: BrandCard[] = [
   {
     id: "kent",
     name: "KENT",
     tagline: "HOUSE OF PURITY",
     subtitle: "Most Trusted Mineral RO with Zero Water Wastage Technology.",
     color: "#00D2FF",
-    image: "/images/brands/kent_seamless.png",
-    features: [
-      { icon: <Droplets className="w-4 h-4 text-[#00D2FF]" />, title: "Zero Water Wastage" },
-      { icon: <ShieldCheck className="w-4 h-4 text-[#00D2FF]" />, title: "Multiple RO+UV+UF" },
-      { icon: <Award className="w-4 h-4 text-[#00D2FF]" />, title: "100% Certified Purity" },
-    ],
+    cardImage: "/images/brands/full_card_kent_clean.png",
     ctaText: "Explore KENT",
     ctaLink: "#products",
   },
@@ -52,29 +42,20 @@ const BRANDS_DATA: BrandItem[] = [
     id: "pureit",
     name: "pureit",
     tagline: "by Unilever",
-    subtitle: "Eco Water Saver RO. Eco Recovery with Mineral Charge.",
+    subtitle: "Eco Water Saver RO. Advanced Purification with Mineral Charge.",
     color: "#0088FF",
-    image: "/images/brands/pureit_seamless.png",
-    features: [
-      { icon: <Droplets className="w-4 h-4 text-[#0088FF]" />, title: "Saves 60% Water" },
-      { icon: <ShieldCheck className="w-4 h-4 text-[#0088FF]" />, title: "Active Copper Charge" },
-      { icon: <Sparkles className="w-4 h-4 text-[#0088FF]" />, title: "7-Stage Eco Filtration" },
-    ],
+    cardImage: "/images/brands/full_card_pureit_clean.png",
     ctaText: "Explore Pureit",
     ctaLink: "#products",
   },
   {
     id: "aquaguard",
-    name: "Aquaguard",
-    trademark: "®",
-    subtitle: "Advanced Purification. Healthier Tomorrow.",
+    name: "Aquaguard®",
+    tagline: "Advanced Purification. Healthier Tomorrow.",
+    subtitle: "India's #1 Doctor Recommended Water Purifier with Active Copper Tech.",
     color: "#00B8E6",
-    image: "/images/brands/aquaguard_seamless.png",
-    features: [
-      { icon: <Droplets className="w-4 h-4 text-[#00B8E6]" />, title: "RO + UV Purification" },
-      { icon: <ShieldCheck className="w-4 h-4 text-[#00B8E6]" />, title: "Superior Protection" },
-      { icon: <Heart className="w-4 h-4 text-[#00B8E6]" />, title: "Better Health" },
-    ],
+    cardImage: "/images/brands/full_card_aquaguard_clean.png",
+    isWide: true,
     ctaText: "Explore Products",
     ctaLink: "#products",
   },
@@ -82,14 +63,9 @@ const BRANDS_DATA: BrandItem[] = [
     id: "atomberg",
     name: "atomberg",
     tagline: "Why not?",
-    subtitle: "Smart IoT Water Purifier with Real-time Mobile App Sync.",
+    subtitle: "Smart IoT Water Purifier with Real-time Mobile App & TDS Sync.",
     color: "#FFB800",
-    image: "/images/brands/atomberg_seamless.png",
-    features: [
-      { icon: <Smartphone className="w-4 h-4 text-[#FFB800]" />, title: "Smart App Control" },
-      { icon: <Zap className="w-4 h-4 text-[#FFB800]" />, title: "Live Real-Time TDS" },
-      { icon: <ShieldCheck className="w-4 h-4 text-[#FFB800]" />, title: "Filter Health Alerts" },
-    ],
+    cardImage: "/images/brands/full_card_atomberg_clean.png",
     ctaText: "Explore Atomberg",
     ctaLink: "#products",
   },
@@ -99,12 +75,7 @@ const BRANDS_DATA: BrandItem[] = [
     tagline: "Innovation has a name",
     subtitle: "Advanced 8-Stage Purification for 100% Baby-Safe Drinking Water.",
     color: "#00C853",
-    image: "/images/brands/aosmith_seamless.png",
-    features: [
-      { icon: <Droplets className="w-4 h-4 text-[#00C853]" />, title: "8-Stage Filtration" },
-      { icon: <ShieldCheck className="w-4 h-4 text-[#00C853]" />, title: "Baby-Safe Water" },
-      { icon: <Award className="w-4 h-4 text-[#00C853]" />, title: "Patented SCMT Tech" },
-    ],
+    cardImage: "/images/brands/full_card_aosmith_clean.png",
     ctaText: "Explore AO Smith",
     ctaLink: "#products",
   },
@@ -116,11 +87,11 @@ export const BrandShowcase: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const prev = () => {
-    setActiveIndex((curr) => (curr === 0 ? BRANDS_DATA.length - 1 : curr - 1));
+    setActiveIndex((curr) => (curr === 0 ? BRANDS_LIST.length - 1 : curr - 1));
   };
 
   const next = () => {
-    setActiveIndex((curr) => (curr === BRANDS_DATA.length - 1 ? 0 : curr + 1));
+    setActiveIndex((curr) => (curr === BRANDS_LIST.length - 1 ? 0 : curr + 1));
   };
 
   // Keyboard navigation
@@ -142,17 +113,17 @@ export const BrandShowcase: React.FC = () => {
         background: "radial-gradient(ellipse at 50% 15%, #08294A 0%, #031426 50%, #010811 100%)",
       }}
     >
-      {/* 1. Clean Deep Ocean Hall Background (NO BAKED-IN CARDS!) */}
+      {/* 1. Pristine Underwater Hall Background (100% CLEAN - ZERO BAKED-IN CARDS!) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/images/brands/brands-clean-hall.webp"
+          src="/images/brands/brands-pristine-hall.webp"
           alt="Clean Underwater Brand Hall Chamber"
           fill
-          className="object-cover object-center opacity-90"
+          className="object-cover object-center opacity-95"
           priority
         />
         {/* Soft Ambient Overhead Spotlight */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-80 bg-gradient-to-b from-[#00D2FF]/20 via-[#0077D9]/10 to-transparent blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-80 bg-gradient-to-b from-[#00D2FF]/20 via-[#0077D9]/10 to-transparent blur-3xl pointer-events-none" />
       </div>
 
       {/* Ambient Floating Refractive Air Bubbles */}
@@ -171,7 +142,7 @@ export const BrandShowcase: React.FC = () => {
         </span>
       </div>
 
-      {/* 3. Main ScrollTide Clutch 3D Stage (Zero Awkward Overlap!) */}
+      {/* 3. Main ScrollTide Clutch 3D Stage (Zero Background Overlap, High Quality Cards!) */}
       <div className="relative z-20 w-full max-w-7xl mx-auto my-auto flex items-center justify-center">
         {/* Navigation Arrow Left */}
         <button
@@ -193,14 +164,14 @@ export const BrandShowcase: React.FC = () => {
 
         {/* 3D Perspective Track */}
         <div
-          className="relative w-full h-[500px] sm:h-[530px] flex items-center justify-center"
+          className="relative w-full h-[490px] sm:h-[530px] flex items-center justify-center"
           style={{ perspective: "1500px" }}
         >
-          {BRANDS_DATA.map((brand, index) => {
+          {BRANDS_LIST.map((brand, index) => {
             const offset = index - activeIndex;
             const isActive = offset === 0;
 
-            // ScrollTide Clutch spacing with generous non-overlapping arc
+            // ScrollTide Clutch 3D curved arc spacing
             let transformStyle = "";
             let opacity = 0;
             let zIndex = 10;
@@ -211,24 +182,24 @@ export const BrandShowcase: React.FC = () => {
               opacity = 1;
               zIndex = 25;
             } else if (offset === -1) {
-              // Neighbor on left
-              transformStyle = "translateX(-380px) translateZ(-80px) rotateY(15deg) scale(0.85)";
-              opacity = 0.82;
+              // Immediate neighbor on left
+              transformStyle = "translateX(-390px) translateZ(-80px) rotateY(16deg) scale(0.88)";
+              opacity = 0.85;
               zIndex = 18;
             } else if (offset === 1) {
-              // Neighbor on right
-              transformStyle = "translateX(380px) translateZ(-80px) rotateY(-15deg) scale(0.85)";
-              opacity = 0.82;
+              // Immediate neighbor on right
+              transformStyle = "translateX(390px) translateZ(-80px) rotateY(-16deg) scale(0.88)";
+              opacity = 0.85;
               zIndex = 18;
             } else if (offset === -2) {
-              // Outer left
-              transformStyle = "translateX(-680px) translateZ(-160px) rotateY(25deg) scale(0.72)";
-              opacity = 0.55;
+              // Far left
+              transformStyle = "translateX(-680px) translateZ(-160px) rotateY(26deg) scale(0.76)";
+              opacity = 0.6;
               zIndex = 12;
             } else if (offset === 2) {
-              // Outer right
-              transformStyle = "translateX(680px) translateZ(-160px) rotateY(-25deg) scale(0.72)";
-              opacity = 0.55;
+              // Far right
+              transformStyle = "translateX(680px) translateZ(-160px) rotateY(-26deg) scale(0.76)";
+              opacity = 0.6;
               zIndex = 12;
             }
 
@@ -248,116 +219,63 @@ export const BrandShowcase: React.FC = () => {
                   transformStyle: "preserve-3d",
                 }}
               >
-                {isActive ? (
+                {isActive && brand.isWide ? (
                   /* ========================================================= */
-                  /* ACTIVE CENTER HERO CARD (Wide Panoramic Glass Stage)      */
+                  /* ACTIVE CENTER HERO CARD: AQUAGUARD WIDE PANORAMIC CARD   */
+                  /* (2K Resolution Image with Real Interactive CTA Overlay)   */
                   /* ========================================================= */
-                  <div className="relative w-[340px] sm:w-[620px] lg:w-[720px] h-[480px] sm:h-[440px] rounded-3xl sm:rounded-[36px] bg-[#031B36]/85 backdrop-blur-2xl border-2 border-[#00D2FF] shadow-[0_0_55px_rgba(0,184,230,0.5),inset_0_0_25px_rgba(0,210,255,0.25)] p-6 sm:p-9 flex flex-col justify-between overflow-hidden">
-                    {/* Top Edge Water Sheen Glow */}
-                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00D2FF] to-transparent opacity-95" />
+                  <div className="relative w-[340px] sm:w-[620px] lg:w-[740px] aspect-[1065/645] rounded-3xl sm:rounded-[36px] overflow-hidden shadow-[0_0_60px_rgba(0,184,230,0.55)] border-2 border-[#00D2FF]/85 group">
+                    <Image
+                      src={brand.cardImage}
+                      alt="Aquaguard Brand Showcase"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
 
-                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center h-full">
-                      {/* Left: Typography, Badges & CTA */}
-                      <div className="sm:col-span-6 space-y-4 text-left z-10 flex flex-col justify-center">
-                        <div>
-                          <h3 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white flex items-baseline">
-                            <span>{brand.name}</span>
-                            {brand.trademark && (
-                              <span className="text-xl sm:text-2xl font-light ml-0.5 text-[#00D2FF]">
-                                {brand.trademark}
-                              </span>
-                            )}
-                          </h3>
-                          {brand.tagline && (
-                            <span className="block text-xs font-bold uppercase tracking-widest text-[#00D2FF] mt-1">
-                              {brand.tagline}
-                            </span>
-                          )}
-                          <p className="text-xs sm:text-sm text-[#DDF5FF]/85 mt-2 font-normal leading-relaxed max-w-xs">
-                            {brand.subtitle}
-                          </p>
+                    {/* Interactive Clickable CTA Button Overlay */}
+                    <div className="absolute bottom-[14%] left-[6%] sm:left-[5.5%] z-20">
+                      <a
+                        href={brand.ctaLink}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-sans font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] hover:shadow-[0_0_30px_rgba(0,210,255,0.8)] hover:scale-105 active:scale-95 transition-all shadow-[0_4px_20px_rgba(0,184,230,0.6)]"
+                      >
+                        <span>Explore Products</span>
+                        <div className="w-5 h-5 rounded-full bg-[#041A30] text-[#00D2FF] flex items-center justify-center">
+                          <ArrowRight className="w-3 h-3" />
                         </div>
-
-                        {/* 3 Feature Capsules with Icons */}
-                        <div className="grid grid-cols-3 gap-2 pt-1">
-                          {brand.features.map((feat, i) => (
-                            <div
-                              key={i}
-                              className="flex flex-col items-center text-center p-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md"
-                            >
-                              <div className="w-8 h-8 rounded-full bg-[#00B8E6]/20 flex items-center justify-center mb-1">
-                                {feat.icon}
-                              </div>
-                              <span className="text-[10px] font-semibold text-[#DDF5FF] leading-tight">
-                                {feat.title}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Explore CTA Button */}
-                        <div className="pt-2">
-                          <a
-                            href={brand.ctaLink}
-                            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-sans font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] hover:shadow-[0_0_30px_rgba(0,210,255,0.7)] hover:scale-105 active:scale-95 transition-all shadow-[0_4px_20px_rgba(0,184,230,0.5)] group"
-                          >
-                            <span>{brand.ctaText}</span>
-                            <div className="w-5 h-5 rounded-full bg-[#041A30] text-[#00D2FF] flex items-center justify-center transition-transform group-hover:translate-x-1">
-                              <ArrowRight className="w-3 h-3" />
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Right: Purifier Visual with Water Splash on Pedestal */}
-                      <div className="sm:col-span-6 relative h-full flex items-center justify-center">
-                        {/* Circular Pedestal Ambient Light */}
-                        <div className="absolute bottom-4 w-48 h-14 bg-[#00D2FF]/35 rounded-full blur-xl pointer-events-none" />
-
-                        {/* Clean Purifier Image */}
-                        <div className="relative w-full h-[220px] sm:h-[300px] transition-transform duration-500 hover:scale-105">
-                          <Image
-                            src={brand.image}
-                            alt={`${brand.name} Water Purifier`}
-                            fill
-                            className="object-contain filter drop-shadow-[0_15px_30px_rgba(0,210,255,0.45)]"
-                            priority
-                          />
-                        </div>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 ) : (
                   /* ========================================================= */
-                  /* FLANKING SIDE CARDS (ScrollTide Clutch 3D Arc)             */
+                  /* FLANKING SIDE CARDS / ACTIVE TALL CARDS (ScrollTide Arc) */
                   /* ========================================================= */
-                  <div className="relative w-[230px] sm:w-[260px] h-[370px] sm:h-[410px] rounded-3xl bg-gradient-to-b from-[#041D38]/85 to-[#021324]/85 backdrop-blur-xl border border-[#00B8E6]/40 p-5 flex flex-col justify-between items-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-[#00D2FF] transition-all">
-                    {/* Brand Header */}
-                    <div className="pt-2">
-                      <h4 className="font-sans font-black text-2xl tracking-tight text-white">
-                        {brand.name}
-                      </h4>
-                      {brand.tagline && (
-                        <span className="block text-[10px] font-bold uppercase tracking-wider text-[#00D2FF] mt-0.5">
-                          {brand.tagline}
-                        </span>
-                      )}
-                    </div>
+                  <div
+                    className={`relative rounded-3xl overflow-hidden transition-all duration-300 ${
+                      isActive
+                        ? "w-[300px] sm:w-[340px] aspect-[266/576] shadow-[0_0_50px_rgba(0,210,255,0.6)] border-2 border-[#00D2FF]"
+                        : "w-[200px] sm:w-[230px] aspect-[266/576] shadow-[0_15px_35px_rgba(0,0,0,0.6)] border border-[#00B8E6]/40 hover:border-[#00D2FF]"
+                    }`}
+                  >
+                    <Image
+                      src={brand.cardImage}
+                      alt={brand.name}
+                      fill
+                      className="object-contain"
+                    />
 
-                    {/* Purifier Clean Visual */}
-                    <div className="relative w-full h-[180px] my-auto">
-                      <Image
-                        src={brand.image}
-                        alt={brand.name}
-                        fill
-                        className="object-contain filter drop-shadow-[0_10px_20px_rgba(0,184,230,0.35)]"
-                      />
-                    </div>
-
-                    {/* View Badge */}
-                    <span className="text-[11px] font-semibold text-[#00D2FF] bg-[#00B8E6]/10 px-3.5 py-1 rounded-full border border-[#00B8E6]/30">
-                      View Model &rarr;
-                    </span>
+                    {/* Interactive CTA overlay when tall card is active */}
+                    {isActive && (
+                      <div className="absolute bottom-6 inset-x-4 flex justify-center z-20">
+                        <a
+                          href={brand.ctaLink}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-sans font-bold text-xs text-white bg-gradient-to-r from-[#00D2FF] to-[#0077D9] shadow-lg hover:scale-105 transition-all"
+                        >
+                          <span>{brand.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -367,10 +285,10 @@ export const BrandShowcase: React.FC = () => {
       </div>
 
       {/* 4. Bottom Scroll Indicator & Brand Selection Dots */}
-      <div className="relative z-20 flex flex-col items-center justify-center gap-3 pb-2">
+      <div className="relative z-20 flex flex-col items-center justify-center gap-3 pb-1">
         {/* Dots Indicator */}
         <div className="flex items-center gap-2">
-          {BRANDS_DATA.map((brand, i) => (
+          {BRANDS_LIST.map((brand, i) => (
             <button
               key={brand.id}
               onClick={() => setActiveIndex(i)}
@@ -384,7 +302,7 @@ export const BrandShowcase: React.FC = () => {
           ))}
         </div>
 
-        {/* Mouse Icon & "Scroll to Explore" */}
+        {/* Single Clean Mouse Icon & "Scroll to Explore" */}
         <div className="flex flex-col items-center text-[#DDF5FF]/60 text-xs gap-1 pt-0.5 animate-pulse">
           <Mouse className="w-4 h-4 text-[#00D2FF]" />
           <span className="text-[10px] tracking-widest uppercase font-semibold">
