@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 150" width="450" height="150">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0077D9"/>
+      <stop offset="100%" stop-color="#00B8E6"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53935"/>
+      <stop offset="100%" stop-color="#D32F2F"/>
+    </linearGradient>
+  </defs>
+  <!-- Monogram AC Circle -->
+  <g transform="translate(15, 10)">
+    <circle cx="65" cy="65" r="58" fill="none" stroke="#D32F2F" stroke-width="6" stroke-dasharray="190 200" stroke-linecap="round"/>
+    <circle cx="65" cy="65" r="58" fill="none" stroke="#073B67" stroke-width="6" stroke-dasharray="160 220" stroke-dashoffset="-180" stroke-linecap="round"/>
+    <!-- Letter A -->
+    <path d="M 40 95 L 65 32 L 90 95 M 50 78 L 80 78" fill="none" stroke="url(#redGrad)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Letter C -->
+    <path d="M 108 55 C 95 38 70 42 65 65 C 60 88 88 95 108 82" fill="none" stroke="#073B67" stroke-width="9" stroke-linecap="round"/>
+    <!-- Droplets -->
+    <path d="M 50 86 C 45 92 48 98 52 98 C 56 98 59 92 50 86 Z" fill="#00B8E6"/>
+    <path d="M 60 84 C 56 90 59 95 62 95 C 65 95 68 90 60 84 Z" fill="#43A047"/>
+  </g>
+  <!-- Aqua Care Text -->
+  <text x="155" y="72" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="900" font-size="46" fill="#073B67" letter-spacing="-1">Aqua</text>
+  <text x="282" y="72" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="900" font-size="46" fill="#2E7D32" letter-spacing="-1">Care</text>
+  <!-- Shop Text with Cart -->
+  <g transform="translate(155, 85)">
+    <!-- Cart runner -->
+    <circle cx="16" cy="18" r="4" fill="#0077D9"/>
+    <path d="M 16 22 L 14 34 L 8 42 M 14 34 L 20 44" stroke="#0077D9" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Cart body -->
+    <path d="M 22 28 L 38 28 L 35 38 L 24 38 Z" fill="none" stroke="#0077D9" stroke-width="2"/>
+    <circle cx="27" cy="41" r="2" fill="#0077D9"/>
+    <circle cx="34" cy="41" r="2" fill="#0077D9"/>
+    <text x="46" y="38" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="900" font-size="38" fill="#D32F2F" letter-spacing="1">Shop</text>
+    <text x="148" y="22" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="700" font-size="12" fill="#D32F2F">TM</text>
+  </g>
+</svg>

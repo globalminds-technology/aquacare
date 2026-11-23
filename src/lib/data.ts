@@ -1,0 +1,288 @@
+import { Product, Category, Brand, Testimonial, FAQItem } from './types';
+
+export const CATEGORIES: Category[] = [
+  {
+    id: 'ro',
+    name: 'RO Purifiers',
+    slug: 'ro-purifiers',
+    description: 'Reverse Osmosis for high TDS groundwater & borewell water',
+    image: '/images/categories/ro.webp',
+    itemCount: 24,
+  },
+  {
+    id: 'uv',
+    name: 'UV Purifiers',
+    slug: 'uv-purifiers',
+    description: 'Ultra Violet disinfection killing 99.99% bacteria & viruses',
+    image: '/images/categories/uv.webp',
+    itemCount: 18,
+  },
+  {
+    id: 'uf',
+    name: 'UF Purifiers',
+    slug: 'uf-purifiers',
+    description: 'Ultra Filtration without electricity, retaining healthy minerals',
+    image: '/images/categories/uf.webp',
+    itemCount: 12,
+  },
+  {
+    id: 'alkaline',
+    name: 'Alkaline Purifiers',
+    slug: 'alkaline-purifiers',
+    description: 'Infuses active hydrogen, zinc & magnesium for pH 8.0+ balance',
+    image: '/images/categories/alkaline.webp',
+    itemCount: 15,
+  },
+  {
+    id: 'dispensers',
+    name: 'Water Dispensers',
+    slug: 'water-dispensers',
+    description: 'Instant hot, normal & ice-cold purified water for modern homes',
+    image: '/images/categories/dispenser.webp',
+    itemCount: 9,
+  },
+  {
+    id: 'filters',
+    name: 'Filters & Accessories',
+    slug: 'filters-accessories',
+    description: 'Original sediment, activated carbon & mineral booster cartridges',
+    image: '/images/categories/filters.webp',
+    itemCount: 32,
+  },
+];
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 'prod-01',
+    name: 'PureFlow RO + UV + MTDS',
+    brand: 'A.O. Smith',
+    category: 'RO Purifiers',
+    rating: 4.8,
+    reviewsCount: 1240,
+    originalPrice: 19999,
+    sellingPrice: 14999,
+    discount: 25,
+    image: '/images/products/purifier-01.webp',
+    bestseller: true,
+    featured: true,
+    specs: ['8-Stage Filtration', 'Mineral Booster', '10L Food-Grade Tank', 'Smart LED Alert'],
+  },
+  {
+    id: 'prod-02',
+    name: 'AquaMax Alkaline Active+',
+    brand: 'Kent',
+    category: 'Alkaline Purifiers',
+    rating: 4.7,
+    reviewsCount: 890,
+    originalPrice: 24999,
+    sellingPrice: 18499,
+    discount: 26,
+    image: '/images/products/purifier-02.webp',
+    bestseller: true,
+    featured: true,
+    specs: ['pH 8.5+ Boost', 'Alkaline Copper Tech', 'Zero Water Wastage', 'Digital TDS Display'],
+  },
+  {
+    id: 'prod-03',
+    name: 'HydroPlus UV + UF UltraClean',
+    brand: 'Aquaguard',
+    category: 'UV Purifiers',
+    rating: 4.6,
+    reviewsCount: 620,
+    originalPrice: 14999,
+    sellingPrice: 10999,
+    discount: 27,
+    image: '/images/products/purifier-03.webp',
+    bestseller: false,
+    featured: true,
+    specs: ['Dual UV-C Protection', 'Active Copper Cartridge', 'Compact Wall Mount', 'Auto-Shutoff'],
+  },
+  {
+    id: 'prod-04',
+    name: 'PureFresh RO Mineralizer',
+    brand: 'Livpure',
+    category: 'RO Purifiers',
+    rating: 4.8,
+    reviewsCount: 980,
+    originalPrice: 21999,
+    sellingPrice: 16499,
+    discount: 25,
+    image: '/images/products/purifier-04.webp',
+    bestseller: true,
+    featured: true,
+    specs: ['Post-Carbon Polisher', 'Membrane Life Enhancer', 'Fast Flow Rate (15L/hr)', 'Low Power Consumption'],
+  },
+];
+
+export const BRANDS: Brand[] = [
+  {
+    id: 'ao-smith',
+    name: 'A.O. Smith',
+    logo: 'AO Smith',
+    modelsCount: '16 Models in Stock',
+    color: '#0077D9',
+    bgGrad: 'from-blue-500/10 to-cyan-500/10',
+  },
+  {
+    id: 'kent',
+    name: 'Kent RO',
+    logo: 'KENT',
+    modelsCount: '22 Models in Stock',
+    color: '#00B8E6',
+    bgGrad: 'from-cyan-500/10 to-teal-500/10',
+  },
+  {
+    id: 'livpure',
+    name: 'Livpure',
+    logo: 'Livpure',
+    modelsCount: '14 Models in Stock',
+    color: '#6366F1',
+    bgGrad: 'from-indigo-500/10 to-blue-500/10',
+  },
+  {
+    id: 'havells',
+    name: 'Havells',
+    logo: 'HAVELLS',
+    modelsCount: '11 Models in Stock',
+    color: '#DC2626',
+    bgGrad: 'from-red-500/10 to-orange-500/10',
+  },
+  {
+    id: 'aquaguard',
+    name: 'Aquaguard',
+    logo: 'Aquaguard',
+    modelsCount: '28 Models in Stock',
+    color: '#0284C7',
+    bgGrad: 'from-sky-500/10 to-blue-500/10',
+  },
+  {
+    id: 'crompton',
+    name: 'Crompton',
+    logo: 'Crompton',
+    modelsCount: '8 Models in Stock',
+    color: '#059669',
+    bgGrad: 'from-emerald-500/10 to-cyan-500/10',
+  },
+];
+
+export const SERVICES = [
+  {
+    id: 'installation',
+    title: 'Installation Service',
+    description: 'Expert technician visit within 4 hours across all Chennai zones. Wall mounting, inlet connection & TDS setup included.',
+    icon: 'Wrench',
+    badge: 'Same Day in Chennai',
+    features: ['Free inlet valve & pipes', 'TDS water testing', 'Electrical safety check'],
+  },
+  {
+    id: 'maintenance',
+    title: 'Maintenance & Servicing',
+    description: 'Complete system diagnosis, sanitization, membrane descaling, and high-pressure flushing for peak performance.',
+    icon: 'Settings',
+    badge: 'Certified Technicians',
+    features: ['Deep chemical-free sanitization', 'Flow rate restoration', 'Leakage guarantee'],
+  },
+  {
+    id: 'filter-replacement',
+    title: 'Filter Replacement',
+    description: '100% genuine factory-certified sediment, pre-carbon, post-carbon, and RO membrane replacements at honest rates.',
+    icon: 'Layers',
+    badge: 'Genuine Parts Only',
+    features: ['Barcode verified cartridges', 'Old filter disposal', 'Free performance check'],
+  },
+  {
+    id: 'customer-support',
+    title: 'Customer Support',
+    description: 'Dedicated Chennai helpdesk on WhatsApp & direct phone line with friendly local Tamil & English speaking experts.',
+    icon: 'Headphones',
+    badge: '7 Days a Week',
+    features: ['Immediate WhatsApp response', 'AMC reminders', 'Warranty claim assistance'],
+  },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 't-1',
+    name: 'Priya Sundaram',
+    location: 'Velachery, Chennai',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    rating: 5,
+    text: 'Excellent product and installation service! We checked Amazon and Flipkart, but Aqua Care Shop gave us ₹3,500 less price with same-day technician installation in Velachery. The water tastes remarkably sweet.',
+    purifierBought: 'PureFlow RO + UV',
+  },
+  {
+    id: 't-2',
+    name: 'Karthik Ramanathan',
+    location: 'Anna Nagar, Chennai',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    rating: 5,
+    text: 'Our borewell TDS was above 1400. Aqua Care Shop team tested our water right at home, suggested AquaMax Alkaline, and fitted it neatly within 3 hours. Great customer care and real price benefit!',
+    purifierBought: 'AquaMax Alkaline Active+',
+  },
+  {
+    id: 't-3',
+    name: 'Dr. Meenakshi Iyer',
+    location: 'Adyar, Chennai',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    rating: 5,
+    text: 'Genuine products with company warranty cards and lower rates than any online sale. The free installation technician was polite, wore clean shoe covers, and explained maintenance clearly.',
+    purifierBought: 'HydroPlus UV + UF',
+  },
+];
+
+export const FAQS: FAQItem[] = [
+  {
+    id: 'faq-1',
+    question: 'Which water purifier is suitable for my home in Chennai?',
+    answer: 'The choice depends on your water source and TDS level. For Chennai Metro Corporation water (TDS < 300), a UV/UF purifier is ideal. For borewell or tanker water (TDS > 500 up to 2000), an RO + MTDS or Alkaline purifier is required. You can also use our interactive Purifier Finder or call us for free water testing.',
+  },
+  {
+    id: 'faq-2',
+    question: 'Do you provide free installation across Chennai?',
+    answer: 'Yes! Every purifier purchased from Aqua Care Shop includes professional doorstep installation by certified technicians within 4 to 24 hours anywhere in Chennai, including Tambaram, OMR, Anna Nagar, and Velachery.',
+  },
+  {
+    id: 'faq-3',
+    question: 'How are your prices lower than Amazon and Flipkart?',
+    answer: 'We source directly in bulk from official brand manufacturers without paying high marketplace commission fees (typically 15% to 22%). We pass these complete direct savings to Chennai families, giving you better pricing and genuine local service.',
+  },
+  {
+    id: 'faq-4',
+    question: 'What is the warranty period and who provides service?',
+    answer: 'All purifiers come with 100% official 1 to 2-year comprehensive brand warranty covering electrical parts and RO membrane. You receive genuine warranty cards, brand tax invoices, and dedicated Aqua Care Shop priority support.',
+  },
+  {
+    id: 'faq-5',
+    question: 'Do you offer filter replacement and AMC maintenance?',
+    answer: 'Yes, we provide genuine replacement filter cartridges for all top brands (Kent, AO Smith, Aquaguard, Livpure) and affordable annual maintenance contracts (AMC) starting from just ₹1,999/year.',
+  },
+];
+
+export const TRUST_BENEFITS = [
+  {
+    title: 'Best Price Guaranteed',
+    subtitle: 'Lower than Amazon & Flipkart',
+    icon: 'BadgePercent',
+  },
+  {
+    title: '100% Genuine Products',
+    subtitle: 'Factory-sealed with warranty',
+    icon: 'ShieldCheck',
+  },
+  {
+    title: 'Professional Installation',
+    subtitle: 'Certified technician at your door',
+    icon: 'Wrench',
+  },
+  {
+    title: 'After-Sales Support',
+    subtitle: 'Quick Chennai-based helpdesk',
+    icon: 'Headphones',
+  },
+  {
+    title: 'Warranty & Service',
+    subtitle: 'Official brand service backup',
+    icon: 'Award',
+  },
+];
+

@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-blue: #0077D9;
+  --aqua-cyan: #00B8E6;
+  --ice-blue: #DDF5FF;
+  --clean-white: #F7FCFF;
+  --deep-ocean: #073B67;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #F7FCFF;
+  color: #073B67;
+}
+
+body {
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7FCFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #00B8E6;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0077D9;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(221, 245, 255, 0.8);
+}
+
+.glass-nav {
+  background: rgba(247, 252, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 184, 230, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 119, 217, 0.12);
+}
+
+/* Water Ripple Animation */
+@keyframes waterPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 230, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(0, 184, 230, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 230, 0);
+  }
+}
+
+.water-pulse {
+  animation: waterPulse 2.2s infinite;
+}
+
+/* Water Wave Gradient */
+.aqua-gradient-text {
+  background: linear-gradient(135deg, #0077D9 0%, #00B8E6 50%, #073B67 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ocean-gradient-bg {
+  background: linear-gradient(180deg, #073B67 0%, #031F38 100%);
+}
+

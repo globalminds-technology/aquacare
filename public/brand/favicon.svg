@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="favDrop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B8E6"/>
+      <stop offset="100%" stop-color="#0077D9"/>
+    </linearGradient>
+  </defs>
+  <path d="M 32 6 C 24 20 12 34 12 44 C 12 55 21 62 32 62 C 43 62 52 55 52 44 C 52 34 40 20 32 6 Z" fill="url(#favDrop)"/>
+  <path d="M 26 40 C 26 34 32 26 32 26 C 32 26 38 34 38 40 C 38 45 34 48 30 48 C 27 48 26 44 26 40 Z" fill="#FFFFFF" opacity="0.85"/>
+</svg>
