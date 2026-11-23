@@ -30,7 +30,7 @@ const BRANDS_LIST: BrandCard[] = [
     name: "KENT",
     tagline: "HOUSE OF PURITY",
     subtitle: "Most Trusted Mineral RO with Zero Water Wastage Technology.",
-    purifierImage: "/images/brands/kent_hq.png",
+    purifierImage: "/images/brands/kent_brand.webp",
     badges: ["Zero Water Wastage", "RO + UV + UF", "100% Certified"],
     ctaText: "Explore KENT",
     ctaLink: "#products",
@@ -40,7 +40,7 @@ const BRANDS_LIST: BrandCard[] = [
     name: "pureit",
     tagline: "by Unilever",
     subtitle: "Eco Water Saver RO. Advanced Purification with Mineral Charge.",
-    purifierImage: "/images/brands/pureit_hq.png",
+    purifierImage: "/images/brands/pureit_brand.webp",
     badges: ["Eco Water Saver", "Mineral Charge", "Smart Auto-Alert"],
     ctaText: "Explore Pureit",
     ctaLink: "#products",
@@ -50,7 +50,7 @@ const BRANDS_LIST: BrandCard[] = [
     name: "Aquaguard®",
     tagline: "Advanced Purification. Healthier Tomorrow.",
     subtitle: "India's #1 Doctor Recommended Purifier with Active Copper Tech.",
-    purifierImage: "/images/brands/aquaguard_hq.png",
+    purifierImage: "/images/brands/aquaguard_brand.webp",
     badges: ["Active Copper", "Superior Protection", "Better Health"],
     ctaText: "Explore Products",
     ctaLink: "#products",
@@ -60,7 +60,7 @@ const BRANDS_LIST: BrandCard[] = [
     name: "atomberg",
     tagline: "Why not?",
     subtitle: "Smart IoT Water Purifier with Real-time Mobile App & TDS Sync.",
-    purifierImage: "/images/brands/atomberg_hq.png",
+    purifierImage: "/images/brands/atomberg_brand.webp",
     badges: ["Smart Mobile App", "Real-Time TDS", "BLDC Motor Pump"],
     ctaText: "Explore Atomberg",
     ctaLink: "#products",
@@ -70,7 +70,7 @@ const BRANDS_LIST: BrandCard[] = [
     name: "AO Smith",
     tagline: "INNOVATION HAS A NAME",
     subtitle: "Advanced 8-Stage Purification for 100% Baby-Safe Drinking Water.",
-    purifierImage: "/images/brands/aosmith_hq.png",
+    purifierImage: "/images/brands/aosmith_brand.webp",
     badges: ["8-Stage SCMT", "100% Baby-Safe", "Patented Tech"],
     ctaText: "Explore AO Smith",
     ctaLink: "#products",
@@ -256,12 +256,13 @@ export const BrandShowcase: React.FC = () => {
                     {/* Cyan Radial Glow Backdrop */}
                     <div className="absolute w-44 h-44 rounded-full bg-[#00D2FF]/20 blur-2xl pointer-events-none group-hover:bg-[#00D2FF]/30 transition-all" />
 
-                    <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
+                    <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105 rounded-2xl overflow-hidden border border-[#00B8E6]/30 shadow-[0_0_20px_rgba(0,184,230,0.3)]">
                       <Image
                         src={brand.purifierImage}
                         alt={brand.name}
                         fill
-                        className="object-contain filter drop-shadow-[0_15px_30px_rgba(0,184,230,0.45)]"
+                        sizes="(max-width: 640px) 100vw, 350px"
+                        className="object-cover"
                         priority
                       />
                     </div>

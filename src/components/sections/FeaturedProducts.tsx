@@ -119,14 +119,17 @@ export const FeaturedProducts: React.FC = () => {
                 </div>
 
                 {/* Product Image Stage */}
-                <div className="relative w-full aspect-square my-3 flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
-                  <div className="absolute inset-4 rounded-full bg-[#00D2FF]/10 blur-xl group-hover:bg-[#00D2FF]/20 transition-all" />
+                <div className="relative w-full aspect-[4/3] my-3 rounded-2xl overflow-hidden bg-[#021528] border border-[#00B8E6]/25 group-hover:border-[#00D2FF]/70 shadow-[0_0_20px_rgba(0,184,230,0.2)] group-hover:shadow-[0_0_30px_rgba(0,210,255,0.4)] transition-all duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#00D2FF]/10 blur-xl group-hover:bg-[#00D2FF]/20 transition-all pointer-events-none" />
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain relative z-10"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 relative z-10"
+                    priority
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#021528]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20" />
                 </div>
 
                 {/* Details Section */}
