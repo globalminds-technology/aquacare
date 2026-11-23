@@ -22,10 +22,10 @@ interface NavLink {
 
 // 1. Exact Section Order as rendered on the Homepage
 const NAV_LINKS: NavLink[] = [
+   { name: "Brands", href: "#brands", id: "brands" },
   { name: "Categories", href: "#categories", id: "categories" },
   { name: "Products", href: "#products", id: "products" },
   { name: "Why Us", href: "#why-us", id: "why-us" },
-  { name: "Brands", href: "#brands", id: "brands" },
   { name: "Services", href: "#services", id: "services" },
   { name: "Purifier Quiz", href: "#quiz", id: "quiz" },
   { name: "Reviews", href: "#reviews", id: "reviews" },
