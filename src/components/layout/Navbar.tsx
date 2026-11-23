@@ -11,7 +11,6 @@ import {
   X,
   PhoneCall,
   ShieldCheck,
-  Check,
 } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 
@@ -48,96 +47,87 @@ export const Navbar: React.FC = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "py-3 bg-[#F7FCFF]/90 backdrop-blur-xl shadow-aqua-sm border-b border-[#00B8E6]/20"
-            : "py-5 bg-transparent"
+          isScrolled ? "py-2.5 sm:py-3" : "py-4 sm:py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          {/* Unified White Pill Floating Bar */}
+          <div className="bg-white/95 backdrop-blur-xl rounded-full px-4 sm:px-6 py-2 sm:py-2.5 border border-[#DDF5FF] shadow-aqua-sm hover:shadow-aqua-md transition-all flex items-center justify-between gap-3 sm:gap-4">
+            {/* 1. Left: Pure Brand Logo (Replaced text with logo) */}
+            <Link href="/" className="flex items-center group flex-shrink-0">
+              <div className="relative h-7 sm:h-9 w-28 sm:w-36 transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/brand/aqua-care-logo.svg"
+                  src="/brand/aqua-care-shop-logo.png"
                   alt="Aqua Care Shop Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain object-left"
                   priority
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-sans font-extrabold text-xl sm:text-2xl tracking-tight text-[#073B67] leading-none">
-                  AQUA CARE
-                </span>
-                <span className="text-[10px] tracking-widest uppercase font-semibold text-[#0077D9]">
-                  SHOP &bull; CHENNAI
-                </span>
-              </div>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 bg-white/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#DDF5FF] shadow-sm">
+            {/* 2. Middle: Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-xs xl:text-sm font-medium text-[#073B67] hover:text-[#0077D9] px-3 py-1.5 rounded-full transition-colors hover:bg-[#DDF5FF]/60"
+                  className="text-xs xl:text-sm font-medium text-[#073B67] hover:text-[#0077D9] px-2.5 xl:px-3 py-1.5 rounded-full transition-colors hover:bg-[#DDF5FF]/60"
                 >
                   {link.name}
                 </a>
               ))}
             </nav>
 
-            {/* Action Buttons */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            {/* 3. Right: Search, Login, Cart, Shop Now */}
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
               {/* Search Toggle */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label="Search purifiers"
-                className="w-10 h-10 rounded-full flex items-center justify-center text-[#073B67] hover:text-[#0077D9] hover:bg-[#DDF5FF] transition-all"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[#073B67] hover:text-[#0077D9] hover:bg-[#DDF5FF] transition-all"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
-              {/* Account Modal Toggle */}
+              {/* Login / User Account */}
               <button
                 onClick={() => setAccountModalOpen(true)}
                 aria-label="User account"
-                className="w-10 h-10 rounded-full hidden sm:flex items-center justify-center text-[#073B67] hover:text-[#0077D9] hover:bg-[#DDF5FF] transition-all"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[#073B67] hover:text-[#0077D9] hover:bg-[#DDF5FF] transition-all"
               >
-                <User className="w-5 h-5" />
+                <User className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
-              {/* Cart Drawer Toggle */}
+              {/* Cart Drawer Toggle with Badge */}
               <button
                 onClick={toggleCart}
                 aria-label="View shopping cart"
-                className="relative w-10 h-10 rounded-full flex items-center justify-center bg-[#DDF5FF] text-[#0077D9] hover:bg-[#0077D9] hover:text-white transition-all shadow-sm"
+                className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#DDF5FF] text-[#0077D9] hover:bg-[#0077D9] hover:text-white transition-all shadow-sm"
               >
-                <ShoppingCart className="w-5 h-5" />
+                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#0077D9] text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                  <span className="absolute -top-1 -right-1 bg-[#0077D9] text-white text-[10px] font-bold w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-md animate-pulse">
                     {cartCount}
                   </span>
                 )}
               </button>
 
-              {/* CTA Shop Now */}
+              {/* Shop Now CTA Button */}
               <a
                 href="#products"
-                className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-[#0077D9] to-[#00B8E6] hover:shadow-aqua-glow hover:opacity-95 transition-all transform hover:-translate-y-0.5"
+                className="hidden sm:inline-flex items-center justify-center px-4 sm:px-5 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#0077D9] to-[#00B8E6] hover:shadow-aqua-glow hover:opacity-95 transition-all transform hover:-translate-y-0.5"
               >
                 Shop Now
               </a>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-[#073B67] hover:bg-[#DDF5FF]"
+                className="lg:hidden w-9 h-9 rounded-full flex items-center justify-center text-[#073B67] hover:bg-[#DDF5FF] ml-1"
                 aria-label="Toggle navigation menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
@@ -173,39 +163,41 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white/95 backdrop-blur-2xl border-b border-[#DDF5FF] shadow-xl px-6 py-5 mt-2 space-y-3 animate-in slide-in-from-top duration-300">
-            <div className="grid grid-cols-2 gap-2 pb-3 border-b border-[#DDF5FF]">
-              {navLinks.map((link) => (
+          <div className="lg:hidden max-w-7xl mx-auto px-3 sm:px-6 mt-2">
+            <div className="bg-white/95 backdrop-blur-2xl rounded-3xl border border-[#DDF5FF] shadow-xl p-5 space-y-3 animate-in slide-in-from-top duration-300">
+              <div className="grid grid-cols-2 gap-2 pb-3 border-b border-[#DDF5FF]">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-3 py-2 rounded-xl text-sm font-medium text-[#073B67] hover:bg-[#DDF5FF] transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+              <div className="pt-2 flex flex-col gap-2">
                 <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 rounded-xl text-sm font-medium text-[#073B67] hover:bg-[#DDF5FF] transition-colors"
+                  href="tel:+919444412345"
+                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#DDF5FF] text-[#0077D9] font-medium text-sm"
                 >
-                  {link.name}
+                  <PhoneCall className="w-4 h-4" /> Chennai Helpline: +91 94444 12345
                 </a>
-              ))}
-            </div>
-            <div className="pt-2 flex flex-col gap-2">
-              <a
-                href="tel:+919444412345"
-                className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#DDF5FF] text-[#0077D9] font-medium text-sm"
-              >
-                <PhoneCall className="w-4 h-4" /> Chennai Helpline: +91 94444 12345
-              </a>
-              <a
-                href="#products"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-center py-2.5 rounded-xl bg-gradient-to-r from-[#0077D9] to-[#00B8E6] text-white font-semibold text-sm"
-              >
-                Explore Water Purifiers
-              </a>
+                <a
+                  href="#products"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-center py-2.5 rounded-xl bg-gradient-to-r from-[#0077D9] to-[#00B8E6] text-white font-semibold text-sm"
+                >
+                  Explore Water Purifiers
+                </a>
+              </div>
             </div>
           </div>
         )}
       </header>
 
-      {/* Account Modal */}
+      {/* Account / Login Modal */}
       {accountModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-[#DDF5FF] relative animate-in zoom-in-95 duration-200">
@@ -219,13 +211,13 @@ export const Navbar: React.FC = () => {
               <div className="w-14 h-14 rounded-full bg-[#DDF5FF] text-[#0077D9] flex items-center justify-center mb-3">
                 <ShieldCheck className="w-8 h-8" />
               </div>
-              <h3 className="font-sans font-bold text-lg text-[#073B67]">Aqua Care Chennai Account</h3>
+              <h3 className="font-sans font-bold text-lg text-[#073B67]">Aqua Care Login</h3>
               <p className="text-xs text-gray-500 mt-1 mb-4">
-                Access warranty certificates, booking status & AMC maintenance history.
+                Access your orders, warranty certificates, and technician service bookings.
               </p>
               <input
                 type="tel"
-                placeholder="Enter 10-digit Chennai Mobile Number"
+                placeholder="Enter 10-digit Mobile Number"
                 className="w-full px-4 py-2.5 rounded-xl border border-[#DDF5FF] text-sm focus:border-[#0077D9] outline-none mb-3"
               />
               <button
@@ -241,4 +233,3 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
-
