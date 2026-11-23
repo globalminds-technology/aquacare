@@ -1,214 +1,93 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { ArrowRight, Droplets, MapPin, Tag, Truck, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck, Truck, Star } from "lucide-react";
 
 export const Hero: React.FC = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY, currentTarget } = e;
-    const rect = currentTarget.getBoundingClientRect();
-    const x = (clientX - rect.left) / rect.width - 0.5;
-    const y = (clientY - rect.top) / rect.height - 0.5;
-    setMousePos({ x, y });
-  };
-
   return (
     <section
       id="hero"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setMousePos({ x: 0, y: 0 });
-      }}
-      className="relative min-h-[92vh] lg:min-h-[96vh] pt-24 sm:pt-28 pb-12 sm:pb-16 flex flex-col justify-center items-center overflow-hidden bg-[#020D1A] select-none"
-      style={{
-        background: "radial-gradient(ellipse at 50% 45%, #062b54 0%, #03162a 50%, #020D1A 100%)",
-      }}
+      className="relative min-h-[85vh] lg:min-h-[92vh] pt-28 sm:pt-36 pb-16 sm:pb-24 flex items-center overflow-hidden bg-[#031427]"
     >
-      {/* 1. Ambient Lighting Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#00D2FF]/12 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/4 w-[500px] h-[350px] bg-[#0077D9]/15 rounded-full blur-[120px] pointer-events-none" />
+      {/* 1. Cinematic Photorealistic Background (Dispenser pouring into glass with bubbles & indoor plant) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/hero/hero_kitchen_clean_2k.webp"
+          alt="Pure water. Better living. - Aqua Care Shop Chennai"
+          fill
+          priority
+          quality={95}
+          className="object-cover object-right lg:object-center opacity-95"
+        />
 
-      {/* 2. Top & Bottom seamless gradient blending (Zero visible edges or hard borders) */}
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#020D1A] to-transparent pointer-events-none z-10" />
-      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020D1A] via-[#020D1A]/70 to-transparent pointer-events-none z-10" />
+        {/* Ambient Dark Cyan Vignette on Left Side for Pristine Text Contrast */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-[#031427]/95 via-[#031427]/75 to-transparent pointer-events-none" />
 
-      {/* 3. The Interactive 3D Hero Master Stage */}
-      <div className="w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6 relative z-20">
-        <div
-          className="relative w-full aspect-[2048/1152] max-h-[82vh] mx-auto rounded-[32px] overflow-hidden transition-transform duration-300 ease-out"
-          style={{
-            transform: isHovered
-              ? `perspective(1200px) rotateY(${mousePos.x * 6}deg) rotateX(${-mousePos.y * 6}deg) scale(1.01)`
-              : "perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)",
-            boxShadow: "0 25px 60px -15px rgba(0, 184, 230, 0.25), 0 0 40px rgba(0, 210, 255, 0.15)",
-          }}
-        >
-          {/* Master 2K 3D Water Purifiers Visual Banner */}
-          <Image
-            src="/images/hero/hero_exact_banner.webp"
-            alt="Water Purifiers Aqua Care Shop Chennai - High TDS RO UV UF Alkaline"
-            fill
-            priority
-            quality={98}
-            className="object-cover object-center"
-          />
+        {/* Seamless Top & Bottom edge fade into page background */}
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#020D1A] via-[#020D1A]/60 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020D1A] to-transparent pointer-events-none" />
+      </div>
 
-          {/* Interactive Dynamic Light Sheen following Cursor */}
-          <div
-            className="absolute inset-0 pointer-events-none transition-opacity duration-300"
-            style={{
-              background: isHovered
-                ? `radial-gradient(circle 500px at ${(mousePos.x + 0.5) * 100}% ${(mousePos.y + 0.5) * 100}%, rgba(0, 210, 255, 0.18), transparent 70%)`
-                : "transparent",
-            }}
-          />
+      {/* 2. Hero Content Container */}
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-2xl space-y-6 text-left">
+          {/* Top Kicker */}
+          <div className="inline-flex items-center gap-2">
+            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.25em] uppercase text-[#DDF5FF]/90">
+              PURE WATER &bull; TRUSTED SINCE 2008
+            </span>
+          </div>
 
-          {/* 4. Interactive Hotspots with Smooth Hover Glowing Feedback */}
-          {/* Top-Left: Chennai Destination Pill */}
-          <a
-            href="#brands"
-            title="Explore Authorised Brands"
-            className="absolute z-20 rounded-full transition-all duration-300 hover:ring-2 hover:ring-[#00D2FF] hover:bg-[#00D2FF]/15 cursor-pointer"
-            style={{
-              left: "4.15%",
-              top: "3.91%",
-              width: "25.39%",
-              height: "6.08%",
-            }}
-          />
+          {/* Master Headline: Serif Typography */}
+          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white leading-[1.05] tracking-tight drop-shadow-lg">
+            Pure water. <br />
+            <span className="italic text-[#8CE8FF] font-light">Better living.</span>
+          </h1>
 
-          {/* Top-Right: Lower Prices Than Amazon & Flipkart */}
-          <a
-            href="#why-us"
-            title="Save Up to 27% Compared to Amazon & Flipkart"
-            className="absolute z-20 rounded-full transition-all duration-300 hover:ring-2 hover:ring-[#FFB800] hover:bg-[#FFB800]/15 cursor-pointer"
-            style={{
-              left: "75.68%",
-              top: "2.17%",
-              width: "19.78%",
-              height: "9.55%",
-            }}
-          />
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base md:text-lg text-[#DDF5FF]/90 max-w-lg leading-relaxed font-sans pt-1">
+            Chennai&apos;s trusted destination for genuine water purifiers at prices lower than online.
+          </p>
 
-          {/* Bottom-Left Feature 1: Direct Brand Savings */}
-          <a
-            href="#why-us"
-            title="Direct Brand Savings"
-            className="absolute z-20 rounded-2xl transition-all duration-300 hover:ring-2 hover:ring-[#00D2FF] hover:bg-[#00D2FF]/15 cursor-pointer"
-            style={{
-              left: "7.32%",
-              top: "79.43%",
-              width: "13.67%",
-              height: "6.94%",
-            }}
-          />
-
-          {/* Bottom-Left Feature 2: Free Doorstep Setup */}
-          <a
-            href="#services"
-            title="Free Professional Doorstep Setup in Chennai"
-            className="absolute z-20 rounded-2xl transition-all duration-300 hover:ring-2 hover:ring-[#00D2FF] hover:bg-[#00D2FF]/15 cursor-pointer"
-            style={{
-              left: "21.97%",
-              top: "79.43%",
-              width: "14.40%",
-              height: "6.94%",
-            }}
-          />
-
-          {/* Bottom-Left Feature 3: 1-2 Year Brand Warranty */}
-          <a
-            href="#services"
-            title="Official 1-2 Year Brand Warranty"
-            className="absolute z-20 rounded-2xl transition-all duration-300 hover:ring-2 hover:ring-[#00D2FF] hover:bg-[#00D2FF]/15 cursor-pointer"
-            style={{
-              left: "37.35%",
-              top: "79.43%",
-              width: "17.58%",
-              height: "6.94%",
-            }}
-          />
-
-          {/* Primary CTA: Explore Purifiers -> */}
-          <a
-            href="#products"
-            title="Explore Water Purifiers Catalog"
-            className="absolute z-20 rounded-full transition-all duration-300 hover:ring-4 hover:ring-[#00D2FF] hover:shadow-[0_0_35px_rgba(0,210,255,0.9)] hover:scale-[1.03] active:scale-95 cursor-pointer"
-            style={{
-              left: "55.91%",
-              top: "78.99%",
-              width: "18.55%",
-              height: "7.81%",
-            }}
-          />
-
-          {/* Secondary CTA: Find My Purifier */}
-          <a
-            href="#quiz"
-            title="Find My Purifier - 60s Water TDS Quiz"
-            className="absolute z-20 rounded-full transition-all duration-300 hover:ring-4 hover:ring-[#00D2FF]/80 hover:bg-[#00D2FF]/20 hover:scale-[1.03] active:scale-95 cursor-pointer"
-            style={{
-              left: "75.44%",
-              top: "78.99%",
-              width: "17.33%",
-              height: "7.81%",
-            }}
-          />
-
-          {/* Bottom Reviews Bar */}
-          <a
-            href="#reviews"
-            title="View 1,450+ Customer Reviews in Chennai"
-            className="absolute z-20 rounded-lg transition-all duration-300 hover:bg-[#00D2FF]/10 cursor-pointer"
-            style={{
-              left: "5.86%",
-              top: "90.28%",
-              width: "45.41%",
-              height: "6.51%",
-            }}
-          />
-
-          {/* Bottom Best Price Guarantee Badge */}
-          <a
-            href="#why-us"
-            title="Best Price Guarantee - Save up to 27% vs Market"
-            className="absolute z-20 rounded-full transition-all duration-300 hover:ring-2 hover:ring-[#FFB800] hover:bg-[#FFB800]/15 cursor-pointer"
-            style={{
-              left: "70.80%",
-              top: "88.98%",
-              width: "21.97%",
-              height: "8.25%",
-            }}
-          />
-        </div>
-
-        {/* Mobile Quick Action Buttons (<sm screens) */}
-        <div className="flex sm:hidden flex-col gap-3 mt-4 px-2">
-          <div className="flex items-center gap-2">
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3">
+            {/* Primary Phone Button (Matches the light cyan pill in the reference visual) */}
             <a
-              href="#products"
-              className="flex-1 py-3 rounded-full font-sans font-extrabold text-xs text-[#020D1A] bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] shadow-[0_0_20px_rgba(0,210,255,0.6)] flex items-center justify-center gap-2"
+              href="tel:+916383321623"
+              className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-full bg-[#B2EBF2] hover:bg-white text-[#003B5C] font-mono font-bold text-xs sm:text-sm tracking-wider shadow-[0_0_30px_rgba(178,235,242,0.5)] hover:shadow-[0_0_40px_rgba(255,255,255,0.85)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
-              <span>Explore Purifiers</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <Phone className="w-4 h-4 text-[#003B5C]" />
+              <span>CALL +91 63833 21623</span>
+              <ArrowRight className="w-4 h-4 text-[#003B5C]" />
             </a>
+
+            {/* Secondary Explore Brands Button */}
             <a
-              href="#quiz"
-              className="flex-1 py-3 rounded-full font-sans font-bold text-xs text-white bg-[#031C38] border border-[#00D2FF]/50 flex items-center justify-center gap-1.5"
+              href="#brands"
+              className="inline-flex items-center gap-2 px-5 sm:px-7 py-3.5 rounded-full bg-[#031C38]/85 hover:bg-[#00D2FF]/20 border border-[#00D2FF]/40 text-white font-sans font-bold text-xs sm:text-sm shadow-sm hover:border-[#00D2FF] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-md"
             >
-              <Droplets className="w-3.5 h-3.5 text-[#00D2FF]" />
-              <span>Find My Purifier</span>
+              <span>Explore Brands</span>
             </a>
           </div>
-          <div className="flex items-center justify-between text-[11px] text-[#DDF5FF]/80 px-1">
-            <span className="font-semibold text-white">⭐ 4.9/5 (1,450+ Reviews)</span>
-            <span className="text-[#FFB800] font-bold">Save up to 27% vs Market</span>
+
+          {/* Trust Value Strip */}
+          <div className="pt-6 border-t border-white/15 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#DDF5FF]/85">
+            <div className="flex items-center gap-1.5 font-semibold">
+              <ShieldCheck className="w-4 h-4 text-[#00D2FF]" />
+              <span>100% Genuine Brands</span>
+            </div>
+            <span className="text-white/30 hidden sm:inline">&bull;</span>
+            <div className="flex items-center gap-1.5 font-semibold">
+              <Truck className="w-4 h-4 text-[#00D2FF]" />
+              <span>Free Doorstep Setup</span>
+            </div>
+            <span className="text-white/30 hidden sm:inline">&bull;</span>
+            <div className="flex items-center gap-1 font-semibold text-[#FFB800]">
+              <Star className="w-3.5 h-3.5 fill-current" />
+              <span className="text-white">4.9/5 Rating</span>
+              <span className="text-[#DDF5FF]/70">(1,450+ Reviews)</span>
+            </div>
           </div>
         </div>
       </div>
