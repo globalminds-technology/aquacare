@@ -3,54 +3,53 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustBenefits } from "@/components/sections/TrustBenefits";
 import { Categories } from "@/components/sections/Categories";
 import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
-import { PriceAdvantage } from "@/components/sections/PriceAdvantage";
+import { WhyChoose } from "@/components/sections/WhyChoose";
 import { BrandShowcase } from "@/components/sections/BrandShowcase";
 import { Services } from "@/components/sections/Services";
 import { PurifierFinder } from "@/components/sections/PurifierFinder";
-import { WhyChoose } from "@/components/sections/WhyChoose";
 import { CustomerReviews } from "@/components/sections/CustomerReviews";
 import { FAQ } from "@/components/sections/FAQ";
 
 export default function HomePage() {
   return (
     <div className="relative">
-      {/* 1. Full Hero Section with 3D Water Purifier Canvas */}
-      <Hero />
+      {/* 01 — Splash Screen is loaded globally in RootLayout */}
 
-      {/* 2. Floating Trust & Benefits Capsule */}
+      {/* 02 — Immersive Hero Section + Trust & Benefits Capsule */}
+      <Hero />
       <TrustBenefits />
 
-      {/* 3. Product Categories */}
+      {/* 03 — Explore Water Purifiers (Interactive Category Cards) */}
       <Categories />
 
-      {/* 4. Featured Best-Selling Purifiers */}
+      {/* 04 — Featured Products (Best-Selling Purifiers with Add-to-Cart) */}
       <FeaturedProducts />
 
-      {/* 5. Marketplace Price Advantage */}
-      <PriceAdvantage />
-
-      {/* 6. Shop by Brand (Clutch Cards) */}
-      <BrandShowcase />
-
-      {/* 7. Installation & Certified Services */}
-      <Services />
-
-      {/* 8. Interactive Purifier Finder Questionnaire */}
-      <PurifierFinder />
-
-      {/* 9. Why Choose Aqua Care Shop? */}
+      {/* 05 — Why Aqua Care? (Price Advantage + Pure Water Glass Splash) */}
       <WhyChoose />
 
-      {/* 10. Reviews & FAQ Side-by-Side Section */}
+      {/* 06 — Shop by Brand (Clutch Cards Layout) */}
+      <BrandShowcase />
+
+      {/* 07 — Installation & Services (Services Grid + Certified Technician) */}
+      <Services />
+
+      {/* 08 — Find the Right Purifier (Interactive 5-Step Wizard Quiz) */}
+      <PurifierFinder />
+
+      {/* 09 & 10 — Customer Reviews & Frequently Asked Questions */}
       <section className="py-20 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* 09 — Customer Reviews */}
             <CustomerReviews />
+            {/* 10 — Frequently Asked Questions */}
             <FAQ />
           </div>
         </div>
       </section>
+
+      {/* 11 — Contact & Footer is rendered globally in RootLayout */}
     </div>
   );
 }
-

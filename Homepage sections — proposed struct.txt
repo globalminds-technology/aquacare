@@ -1,0 +1,1084 @@
+Homepage sections — proposed structure
+Let's design the homepage in this order:
+
+
+
+
+
+
+
+
+
+
+01 — Splash / Loading Experience
+
+Opening experience
+
+A brief water animation with the Aqua Care Shop logo appearing through flowing water, droplets, or a wave reveal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+02 — Immersive Hero Section
+Full-screen cinematic hero with an animated wave, 3D purifier, headline, and shopping CTA.
+
+
+
+
+
+
+
+
+
+
+
+
+
+03 — Explore Water Purifiers
+Interactive category cards for RO, UV, UF, alkaline, and other purifier types.
+
+
+
+
+
+
+
+
+
+
+
+
+
+04 — Featured Products
+Best-selling products with pricing, offers, ratings, comparison, and add-to-cart actions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+05 — Why Aqua Care?
+A premium animated section highlighting why customers should purchase from us instead of marketplaces.
+
+
+
+
+
+
+
+
+
+
+
+
+
+06 — Shop by Brand
+Brand showcase featuring available purifier brands, with logo cards and interactive hover effects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+07 — Installation & Services
+Installation, maintenance, filter replacement, repair, AMC, and service support.
+
+
+
+
+
+
+
+
+
+
+
+
+
+08 — Find the Right Purifier
+An interactive quiz that helps users select a purifier according to their water source and requirements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+09 — Customer Reviews
+Real testimonials, Google ratings, customer photos, and trust signals.
+
+
+
+
+
+
+
+
+
+
+
+
+
+10 — Frequently Asked Questions
+Questions about purifier selection, installation, warranty, delivery, water quality, and service.
+
+
+
+
+
+
+
+
+
+
+
+
+
+11 — Contact & Footer
+Location, phone, WhatsApp, store details, navigation, and final CTA.
+
+
+# AQUA CARE SHOP — IMMERSIVE E-COMMERCE WEBSITE
+
+Build a premium, modern, highly interactive e-commerce website for **Aqua Care Shop**, a water purifier store serving Chennai.
+
+## Brand Positioning
+
+Tagline:
+
+“Chennai's Leading Destination for Water Purifiers, at Lower Prices Than Amazon & Flipkart”
+
+The website must feel like a premium technology and lifestyle brand, not a traditional electronics shop.
+
+## 1. Technology Stack
+
+Use:
+
+- Next.js with App Router
+- TypeScript
+- Tailwind CSS
+- React
+- Shadcn UI for reusable UI components
+- React Three Fiber + Three.js for 3D scenes
+- GSAP for scroll animations and cinematic transitions
+- Lenis for smooth scrolling
+- Lucide React for icons
+- Zustand for cart state if needed
+- TanStack Query for future API integration
+
+Use pnpm as the package manager.
+
+Use a clean, modular, scalable architecture.
+
+## 2. Design System
+
+### Color Palette — Aqua Blue
+
+- Primary Blue: #0077D9
+- Aqua Cyan: #00B8E6
+- Ice Blue: #DDF5FF
+- Clean White: #F7FCFF
+- Deep Ocean: #073B67
+
+Use the colors consistently throughout the website.
+
+Design direction:
+
+- Premium and modern
+- Clean white and ice-blue backgrounds
+- Deep ocean blue for important contrast
+- Aqua gradients
+- Glassmorphism used selectively
+- Rounded corners
+- Soft shadows
+- Fluid water-inspired transitions
+- Premium typography
+- Spacious layouts
+- Strong visual hierarchy
+
+Avoid:
+- Generic template layouts
+- Excessive blue solid backgrounds
+- Too many gradients
+- Clutter
+- Excessive animation
+- Cheap-looking card designs
+- Unnecessary borders
+- Overly cartoonish water effects
+
+## 3. Splash Screen
+
+Create a full-screen branded splash screen.
+
+Experience:
+
+1. Full-screen deep ocean / aqua gradient.
+2. A realistic water ripple begins.
+3. Water droplets appear.
+4. Aqua Care Shop logo emerges.
+5. A wave sweeps across the screen.
+6. The wave transitions into the main homepage.
+
+The splash screen must be short and smooth, approximately 1–2 seconds.
+
+It must not negatively impact website performance or block users unnecessarily.
+
+Create the effect using Three.js, shaders, CSS, canvas, or lightweight animation techniques.
+
+## 4. Navbar
+
+Create a floating premium navbar.
+
+Items:
+
+- Logo
+- Products
+- Brands
+- Services
+- About Us
+- Search
+- Account
+- Cart
+- Shop Now
+
+Initially, it should appear over the hero.
+
+On scrolling:
+
+- Add a white/ice-blue glass background
+- Add backdrop blur
+- Add subtle shadow
+- Maintain excellent readability
+- Keep the navbar sticky
+
+Create a responsive mobile navigation menu.
+
+## 5. Hero Section
+
+Create an immersive full-screen hero section.
+
+Headline:
+
+“Water Purifiers”
+
+Supporting text:
+
+“Chennai's Leading Destination for Water Purifiers, at Lower Prices Than Amazon & Flipkart”
+
+CTA buttons:
+
+- Explore Purifiers
+- Find My Purifier
+
+Visual:
+
+- Premium 3D water purifier
+- Transparent flowing water
+- Water wave surrounding the product
+- Floating droplets
+- Subtle mouse-responsive movement
+- Smooth camera movement
+- Product spotlight
+- Premium lighting
+- Cinematic composition
+
+Use a large product visual on the right and typography on the left on desktop.
+
+On mobile, create a visually balanced stacked layout.
+
+The hero should be the most visually impressive section of the website.
+
+## 6. Trust & Benefits Section
+
+Create a horizontal benefits section.
+
+Features:
+
+- Best Price Guaranteed
+- Genuine Products
+- Professional Installation
+- After-Sales Support
+- Warranty & Service
+
+Use clean icons and subtle animations.
+
+## 7. Product Categories
+
+Create an interactive category section.
+
+Categories:
+
+- RO Purifiers
+- UV Purifiers
+- UF Purifiers
+- Alkaline Purifiers
+- Water Dispensers
+- Filters & Accessories
+
+Use attractive image-based cards.
+
+Hover:
+
+- Card lifts slightly
+- Image zooms subtly
+- Aqua glow appears
+- Smooth transition
+- CTA appears
+
+Make the cards responsive.
+
+## 8. Featured Products
+
+Create a premium product showcase.
+
+Product cards should contain:
+
+- Product image
+- Product name
+- Brand
+- Rating
+- Review count
+- Original price
+- Selling price
+- Discount percentage
+- Bestseller badge where appropriate
+- Add-to-cart button
+- Wishlist button
+- Quick view option
+
+Design the section with a premium ecommerce experience.
+
+Include:
+
+- Best Sellers
+- Featured Products
+- New Arrivals
+
+Use placeholder/demo products if actual product data is not available.
+
+Clearly keep product information configurable.
+
+Never invent real product claims, actual ratings, or verified prices.
+
+## 9. Price Advantage Section
+
+Headline:
+
+“Why Pay More Elsewhere?”
+
+Show a price comparison layout.
+
+Comparison examples:
+
+- Amazon
+- Flipkart
+- Aqua Care Shop
+
+Use placeholder values for demonstration only.
+
+Do not claim verified marketplace pricing unless actual verified price data is supplied.
+
+Create a visually engaging price comparison with animated counters or subtle price transitions.
+
+Highlight Aqua Care Shop pricing.
+
+## 10. Brand Showcase
+
+Create a horizontal brand showcase.
+
+Brands should be configurable.
+
+Use actual brand logos only when available and properly sourced.
+
+Include:
+
+- Brand logo
+- Hover effect
+- View products CTA
+
+## 11. Installation & Services
+
+Create a premium service section.
+
+Services:
+
+- Installation
+- Maintenance
+- Filter Replacement
+- AMC Plans
+- Customer Support
+
+Use professional service visuals.
+
+Create interactive service cards with subtle animations.
+
+## 12. Purifier Finder
+
+Create an interactive wizard.
+
+Headline:
+
+“Find the Right Purifier for Your Home”
+
+Questions:
+
+1. What is your water source?
+   - Corporation water
+   - Borewell
+   - Tanker
+   - Mixed
+
+2. Do you know the water TDS level?
+
+3. How many people are in your household?
+
+4. What is your preferred budget?
+
+5. Do you have a preferred brand?
+
+Create a step-by-step UI.
+
+Include:
+
+- Progress indicator
+- Smooth transitions
+- Previous/Next buttons
+- Selection cards
+- Result page
+- Recommended product cards
+
+Keep recommendation logic modular so it can be replaced with backend logic later.
+
+## 13. Why Choose Aqua Care Shop?
+
+Create a visually engaging section with:
+
+- Lower prices than marketplaces
+- Genuine products
+- Professional installation
+- Expert assistance
+- Reliable after-sales support
+
+Use animated water visuals and clean typography.
+
+## 14. Customer Testimonials
+
+Create a premium testimonial carousel.
+
+Include:
+
+- Customer image
+- Customer name
+- Location
+- Rating
+- Review text
+
+Use demo testimonials clearly identified as placeholder content.
+
+Do not fabricate real reviews or imply that placeholder testimonials are verified.
+
+## 15. FAQ
+
+Create an animated accordion.
+
+Questions:
+
+- Which water purifier is suitable for my home?
+- Do you provide installation?
+- What is the warranty period?
+- Do you provide filter replacement?
+- How long does delivery take?
+- Can I get service after purchase?
+
+Keep FAQ content configurable.
+
+## 16. Contact & Footer
+
+Create a premium footer with a flowing water animation.
+
+Include:
+
+- Aqua Care Shop logo
+- Store location
+- Phone number
+- WhatsApp
+- Google Maps link
+- Products
+- Brands
+- Services
+- FAQs
+- Warranty
+- Returns
+- About Us
+- Contact
+- Social media links
+
+Contact information should be configurable and placeholders should be used until actual details are supplied.
+
+## 17. Animations
+
+Use GSAP and React Three Fiber selectively.
+
+Implement:
+
+- Splash screen water reveal
+- Hero product animation
+- Scroll-triggered section reveals
+- Smooth text reveals
+- Product hover animations
+- Water ripple effects
+- Floating particles
+- Parallax effects
+- Wave transitions
+- Smooth scrolling
+- Navbar transition
+- Category hover interactions
+- Product card interactions
+
+Animations should be premium, fluid, and performant.
+
+Avoid excessive animation that interferes with usability.
+
+Respect reduced-motion preferences.
+
+## 18. Asset Creation & Management
+
+Create or source all necessary assets.
+
+Required assets:
+
+- Aqua Care Shop logo
+- Logo variations
+- Favicon
+- Hero water purifier image/render
+- Product images
+- Category images
+- Water splash assets
+- Water wave assets
+- Water droplet assets
+- Installation imagery
+- Lifestyle imagery
+- Customer testimonial images
+- Brand logos
+- Background textures
+- Icons
+
+Create a structured public/assets directory.
+
+Use optimized WebP or AVIF images where possible.
+
+Use SVG for logos and icons.
+
+If an image-generation capability is available, generate cohesive, consistent assets matching the Aqua Blue design system.
+
+If assets cannot be generated, use legitimate royalty-free sources or well-organized placeholders.
+
+Never leave broken images.
+
+Create an asset manifest documenting:
+
+- Asset name
+- File path
+- Purpose
+- Source or generation prompt
+
+## 19. Performance
+
+The website must be performant.
+
+Requirements:
+
+- Lazy load non-critical images
+- Optimize image sizes
+- Use dynamic imports for 3D components
+- Avoid loading heavy 3D scenes on mobile unnecessarily
+- Reduce unnecessary re-renders
+- Optimize animations
+- Use responsive images
+- Maintain good Lighthouse performance
+- Prevent layout shifts
+- Use skeleton loaders when appropriate
+
+## 20. Responsive Design
+
+The website must work beautifully on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Do not simply shrink the desktop layout.
+
+Redesign layouts for mobile.
+
+Make navigation, cards, animations, and product visuals mobile-friendly.
+
+## 21. Architecture
+
+Create reusable components.
+
+Suggested structure:
+
+src/
+  app/
+    page.tsx
+    layout.tsx
+  components/
+    layout/
+      navbar/
+      footer/
+    sections/
+      splash-screen/
+      hero/
+      benefits/
+      categories/
+      featured-products/
+      price-comparison/
+      brands/
+      services/
+      purifier-finder/
+      testimonials/
+      faq/
+    products/
+    ui/
+    animations/
+    three/
+  data/
+    products.ts
+    categories.ts
+    brands.ts
+    testimonials.ts
+    faq.ts
+  hooks/
+  lib/
+  stores/
+  types/
+
+Keep each homepage section modular and maintainable.
+
+## 22. Development Workflow
+
+Before implementation:
+
+1. Inspect the existing project.
+2. Understand the current folder structure.
+3. Avoid deleting existing working code.
+4. Install only necessary dependencies.
+5. Create the design system.
+6. Build the reusable components.
+7. Build each homepage section.
+8. Implement animation.
+9. Optimize responsive layouts.
+10. Test the website.
+
+Implement the website progressively.
+
+Do not generate a static mockup.
+
+Build a fully functional interactive website.
+
+All buttons must work.
+
+All navigation must work.
+
+All interactive components must have proper states.
+
+The final result should feel like a premium immersive 3D water purifier e-commerce experience with the Aqua Blue brand identity.
+
+## Implement Water Wave Asset — Aqua Care Shop
+
+Use the provided transparent water-wave image asset (`public/images/water-wave.png`) in the Aqua Care Shop website.
+
+### Hero Section
+- Position the water wave as a decorative visual layer across the bottom portion of the hero section.
+- The wave should stretch across the viewport while maintaining its aspect ratio.
+- Use `object-fit: contain` or an appropriate background positioning strategy.
+- Keep the main product and headline content clearly visible.
+- The wave must blend naturally into the light aqua-blue background.
+- Add a subtle animation using GSAP, such as gentle vertical movement, slight horizontal movement, or opacity transitions.
+- Avoid aggressive movement or distortion.
+
+### Splash Screen
+- Reuse the same wave asset for the splash screen transition.
+- Animate the wave upward or horizontally to reveal the homepage.
+- Create a smooth transition without abrupt jumps.
+- Keep the splash animation short and lightweight.
+
+### Section Transitions
+- Reuse the asset selectively between sections where it improves the visual flow.
+- Do not place the wave everywhere.
+- Avoid repetitive decorations.
+
+### Technical Requirements
+- Use the image as a transparent overlay.
+- Do not modify, recreate, or replace the original asset.
+- Ensure responsive behavior on mobile, tablet, and desktop.
+- Optimize image loading.
+- Use pointer-events: none for decorative layers.
+- Ensure decorative images do not interfere with buttons, navigation, or scrolling.
+- Respect prefers-reduced-motion.
+- Use absolute positioning and appropriate z-index layers.
+
+The final result should look like a premium water-themed website with elegant flowing water, not a generic animated background.
+
+## Integrate Hero Product Asset — Aqua Care Shop
+
+Use the newly provided hero water purifier image at:
+
+`public/images/hero/aqua-purifier-hero.png`
+
+Integrate it into the Aqua Care Shop homepage hero section.
+
+### Layout
+- Keep the hero headline and CTA buttons on the left.
+- Position the purifier visual prominently on the right.
+- The product should be the visual focal point.
+- Ensure the image blends naturally into the Aqua Blue background.
+- Use responsive positioning and sizing.
+
+### Animation
+- Add a subtle floating animation to the product.
+- Add gentle scale or movement on scroll.
+- If appropriate, use GSAP for smooth entrance animation.
+- Animate water droplets subtly, but do not animate the entire image aggressively.
+- Use parallax movement on mouse movement for desktop, with limited movement.
+
+### Visual Treatment
+- Maintain the premium cinematic look.
+- Use soft aqua lighting behind the product.
+- Add subtle glow or radial gradient behind the purifier.
+- Preserve the product's proportions.
+- Avoid excessive shadows or artificial glow.
+- Do not add additional product imagery that conflicts with this asset.
+
+### Technical
+- Use Next.js Image where appropriate.
+- Ensure the image is optimized and responsive.
+- Do not stretch the image.
+- Maintain appropriate z-index layering with the water-wave asset.
+- Ensure mobile layouts remain clean and readable.
+- Keep animations performant.
+- Respect reduced-motion preferences.
+
+The product must appear premium, realistic, and visually integrated into the hero—not like an image pasted onto the background.
+## Integrate Hero Product Asset — Aqua Care Shop
+
+Use the newly provided hero water purifier image at:
+
+`public/images/hero/aqua-purifier-hero.png`
+
+Integrate it into the Aqua Care Shop homepage hero section.
+
+### Layout
+- Keep the hero headline and CTA buttons on the left.
+- Position the purifier visual prominently on the right.
+- The product should be the visual focal point.
+- Ensure the image blends naturally into the Aqua Blue background.
+- Use responsive positioning and sizing.
+
+### Animation
+- Add a subtle floating animation to the product.
+- Add gentle scale or movement on scroll.
+- If appropriate, use GSAP for smooth entrance animation.
+- Animate water droplets subtly, but do not animate the entire image aggressively.
+- Use parallax movement on mouse movement for desktop, with limited movement.
+
+### Visual Treatment
+- Maintain the premium cinematic look.
+- Use soft aqua lighting behind the product.
+- Add subtle glow or radial gradient behind the purifier.
+- Preserve the product's proportions.
+- Avoid excessive shadows or artificial glow.
+- Do not add additional product imagery that conflicts with this asset.
+
+### Technical
+- Use Next.js Image where appropriate.
+- Ensure the image is optimized and responsive.
+- Do not stretch the image.
+- Maintain appropriate z-index layering with the water-wave asset.
+- Ensure mobile layouts remain clean and readable.
+- Keep animations performant.
+- Respect reduced-motion preferences.
+
+The product must appear premium, realistic, and visually integrated into the hero—not like an image pasted onto the background.
+
+## Integrate Water Droplet Asset — Aqua Care Shop
+
+Use the water droplet asset located at:
+
+`public/images/water/water-droplet.png`
+
+### Splash Screen
+- Use the droplet as the main visual element during the splash screen.
+- Animate it appearing with a scale and opacity transition.
+- Add a subtle floating motion.
+- Use the droplet as the center point for a ripple effect.
+- Transition into the homepage with a water ripple animation.
+
+### Decorative Elements
+Use smaller versions of the droplet selectively in:
+- Hero section
+- Section transitions
+- Purifier Finder
+- Loading states
+- Empty states
+- Small visual accents
+
+### Animation
+Use GSAP for:
+- Scale-in animation
+- Gentle floating movement
+- Rotation (very subtle)
+- Opacity transitions
+- Ripple effects
+
+Do not animate every droplet simultaneously.
+
+### Visual Style
+- Maintain the Aqua Blue palette.
+- Add subtle aqua glow behind the droplet.
+- Keep the visual elegant and premium.
+- Do not make it cartoon-like.
+- Avoid excessive glowing effects.
+
+### Technical Requirements
+- Use responsive sizing.
+- Keep decorative elements behind content.
+- Use pointer-events: none.
+- Optimize performance.
+- Respect prefers-reduced-motion.
+- If the asset has a checkerboard pattern baked into the image rather than real transparency, remove the background before using it.
+
+The droplet should become a consistent visual element throughout the Aqua Care Shop website.
+
+## Integrate Pure Water Glass Asset — Aqua Care Shop
+
+Use the transparent image asset:
+
+`public/images/lifestyle/pure-water-glass.png`
+
+Integrate it into the Aqua Care Shop homepage as a premium lifestyle visual.
+
+### Placement
+- Use it in the “Why Choose Aqua Care Shop?” section or a water purity storytelling section.
+- Position the image on one side and headline/content on the other.
+- Allow the water splash to visually extend beyond the image container where appropriate.
+- Blend it into the Aqua Blue and Ice Blue background.
+
+### Animation
+- Add a subtle floating animation to the glass.
+- Animate the water splash with a gentle vertical or horizontal movement.
+- Use GSAP for entrance animation when the section enters the viewport.
+- Add a subtle parallax effect on desktop.
+- Do not distort the glass or water.
+
+### Styling
+- Keep the visual premium and clean.
+- Use soft aqua gradients behind the image.
+- Avoid unnecessary borders.
+- Do not add another artificial background behind the transparent asset.
+- Keep the image large enough to be visually impactful.
+
+### Technical
+- Use Next.js Image where appropriate.
+- Maintain aspect ratio.
+- Use responsive sizing.
+- Keep decorative movement lightweight.
+- Use pointer-events: none where appropriate.
+- Respect prefers-reduced-motion.
+
+The image should communicate freshness, purity, and quality, and should blend naturally into the surrounding website section.
+
+## Integrate Aqua Wave Overlay — Aqua Care Shop
+
+Use the transparent wave asset:
+
+`public/images/water/aqua-wave-overlay.png`
+
+### Usage
+Use this asset selectively in:
+- Homepage hero section
+- Section transitions
+- Featured products section
+- Footer
+
+### Hero
+- Position the wave along the bottom or side of the hero.
+- Allow the wave to extend beyond the section boundaries.
+- Blend it naturally with the aqua gradient.
+- Keep headline, CTA buttons, and purifier clearly visible.
+
+### Animation
+- Add subtle horizontal movement.
+- Add gentle floating movement.
+- Use GSAP for scroll-triggered entrance.
+- Optional: animate scale very slightly.
+- Avoid excessive motion.
+
+### Styling
+- Maintain the Aqua Blue palette.
+- Use transparency to blend naturally with backgrounds.
+- Do not add a rectangular background.
+- Avoid excessive glow effects.
+- Preserve the original image aspect ratio.
+
+### Technical
+- Use absolute positioning where appropriate.
+- Set pointer-events: none.
+- Ensure correct z-index layering.
+- Optimize image loading.
+- Make it responsive.
+- Respect prefers-reduced-motion.
+
+Use this asset as a visual enhancement, not as a repeated decoration in every section.
+
+## Integrate Hero Purifier — Aqua Care Shop
+
+Use this transparent product image:
+
+`public/images/hero/aqua-purifier-hero.png`
+
+### Hero Layout
+- Place the purifier prominently on the right side of the hero.
+- Keep the main heading, supporting text, and CTA buttons on the left.
+- Make the purifier large and visually dominant.
+- Use a soft aqua radial gradient behind the product.
+- Layer the transparent water wave asset behind or around the purifier.
+- Avoid covering the text or buttons.
+
+### Animation
+- Animate the purifier entering the hero with a smooth fade and scale.
+- Add gentle floating motion.
+- Apply subtle mouse-based parallax on desktop.
+- Add a slight scroll-based movement.
+- Use GSAP for smooth transitions.
+- Keep the animation subtle and premium.
+
+### Visual
+- Preserve the original product proportions.
+- Do not crop the purifier.
+- Do not stretch the image.
+- Blend the transparent image naturally into the background.
+- Avoid adding a card or rectangular background around it.
+- Keep the composition clean and cinematic.
+
+### Responsive
+- Desktop: product on the right, text on the left.
+- Tablet: adjust spacing and scale.
+- Mobile: stack the text and product, keeping the product large enough to be visible.
+
+### Performance
+- Use Next.js Image.
+- Lazy-load where appropriate.
+- Keep animation GPU-friendly.
+- Respect prefers-reduced-motion.
+
+The purifier should be the focal point of the hero section and feel like a premium product presentation.
+
+## Integrate RO Filter Category Visual — Aqua Care Shop
+
+Use the transparent image:
+
+`public/images/categories/ro-filters.png`
+
+### Placement
+Integrate this asset into the Water Purifier Categories section, specifically the RO Filters / Filter Systems category card.
+
+### Design
+- Use the image as the main visual for the category.
+- Keep the background light aqua or white.
+- Blend the transparent image naturally with the card.
+- Maintain the Aqua Blue brand palette.
+- Use rounded card styling.
+- Keep category title and CTA separate from the image.
+
+### Animation
+- Subtle image scale on hover.
+- Slight floating movement if appropriate.
+- Smooth reveal when entering the viewport.
+- Avoid excessive animation.
+
+### Responsive
+- Maintain the image aspect ratio.
+- Ensure it looks good on desktop, tablet, and mobile.
+- Do not crop important components of the filters.
+
+### Technical
+- Use Next.js Image.
+- Ensure the PNG transparency is preserved.
+- Do not add a white rectangle behind the asset.
+- Keep image layering correct.
+- Optimize loading.
+- Respect reduced-motion preferences.
+
+Use this as a premium visual for the RO filter category.
+
+## Integrate UV Purifier Category Visual — Aqua Care Shop
+
+Use the UV purifier image:
+
+`public/images/categories/uv-purifier.png`
+
+### Placement
+Integrate it into the purifier categories section as the visual for the UV purifier category.
+
+### Design
+- Create a premium category card.
+- Use an ice-blue or very light aqua background.
+- Place the UV purifier image prominently.
+- Use the image as a contained visual, not as a stretched background.
+- Keep the category title and CTA separate from the image.
+- Ensure the image blends with the Aqua Blue design system.
+
+### Interaction
+- Add a subtle hover scale effect.
+- Animate the card entrance when it enters the viewport.
+- Use a smooth transition.
+- Avoid excessive animation.
+
+### Responsive
+- Maintain image aspect ratio.
+- Adjust the image size for mobile.
+- Keep text readable.
+- Do not crop the purifier.
+
+### Technical
+- Use Next.js Image.
+- Optimize loading.
+- Use a consistent card style with the RO category.
+- Ensure responsive behavior.
+- Respect prefers-reduced-motion.
+
+Category title: UV Water Purifiers
+
+CTA: Explore UV Purifiers

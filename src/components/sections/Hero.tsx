@@ -19,14 +19,14 @@ export const Hero: React.FC = () => {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative min-h-[92vh] pt-28 pb-16 flex items-center overflow-hidden bg-gradient-to-b from-[#DDF5FF]/40 via-[#F7FCFF] to-white"
+      className="relative min-h-[92vh] pt-28 pb-24 flex items-center overflow-hidden bg-gradient-to-b from-[#DDF5FF]/50 via-[#F7FCFF] to-white"
     >
       {/* Dynamic Water Animation Canvas */}
       <HeroCanvas />
 
-      {/* Background Water Droplet Accents */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-[#00B8E6]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0077D9]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Soft Aqua Lighting Behind Purifier */}
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-[#00B8E6]/25 via-[#0077D9]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-[#0077D9]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -50,7 +50,7 @@ export const Hero: React.FC = () => {
 
             {/* Supporting Description */}
             <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Experience ultra-pure alkaline drinking water engineered for Chennai’s groundwater and metro supply. 100% genuine products with guaranteed lower prices and same-day certified technician installation.
+              Experience ultra-pure alkaline drinking water engineered for Chennai’s groundwater and metro supply. 100% genuine factory-sealed purifiers with guaranteed lower prices and same-day certified technician installation.
             </p>
 
             {/* Key Micro-Pill Points */}
@@ -98,36 +98,39 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: 3D Living Water Purifier Showcase */}
+          {/* Right Column: Hero Purifier Showcase */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            {/* Visual Glass Platform */}
+            {/* Soft Aqua Radial Glow behind product */}
+            <div className="absolute inset-0 bg-radial-gradient from-[#00B8E6]/30 via-[#DDF5FF]/20 to-transparent rounded-full filter blur-2xl transform scale-110 pointer-events-none" />
+
+            {/* 3D Water Purifier Container */}
             <div
-              className="relative w-full max-w-md aspect-[4/5] rounded-3xl p-6 flex flex-col items-center justify-center transition-transform duration-300 ease-out"
+              className="relative w-full max-w-lg aspect-[4/5] p-2 flex flex-col items-center justify-center transition-transform duration-300 ease-out"
               style={{
-                transform: `perspective(1000px) rotateY(${mousePos.x * 12}deg) rotateX(${-mousePos.y * 12}deg)`,
+                transform: `perspective(1000px) rotateY(${mousePos.x * 10}deg) rotateX(${-mousePos.y * 10}deg)`,
               }}
             >
-              {/* Purifier Hero Image with living water stream */}
-              <div className="relative w-full h-full filter drop-shadow-[0_20px_35px_rgba(0,119,217,0.25)]">
+              {/* Product Visual using aqua-purifier-hero.png */}
+              <div className="relative w-full h-full filter drop-shadow-[0_25px_40px_rgba(0,119,217,0.28)] transition-transform duration-500 animate-float">
                 <Image
-                  src="/images/hero/purifier-hero.webp"
-                  alt="Premium Smart Water Purifier with Flowing Clean Water"
+                  src="/images/hero/aqua-purifier-hero.png"
+                  alt="Aqua Care Shop Premium Smart Water Purifier with Flowing Clean Water"
                   fill
                   className="object-contain"
                   priority
                 />
               </div>
 
-              {/* Floating Feature Tag Top Right */}
+              {/* Floating Quality Tag Top Right */}
               <div className="absolute top-4 right-2 sm:right-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-aqua-md border border-[#DDF5FF] flex items-center gap-2 animate-float">
                 <div className="w-3 h-3 rounded-full bg-emerald-500" />
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] text-gray-500 font-medium">Water Quality</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Purification Tech</span>
                   <span className="text-xs font-bold text-[#073B67]">99.9% Pure Alkaline</span>
                 </div>
               </div>
 
-              {/* Floating Feature Tag Bottom Left */}
+              {/* Floating Price Guarantee Tag Bottom Left */}
               <div
                 className="absolute bottom-6 left-2 sm:left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-aqua-md border border-[#DDF5FF] flex items-center gap-2.5 animate-float"
                 style={{ animationDelay: "1.5s" }}
@@ -146,7 +149,18 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Decorative Transparent Water-Wave Layer Across the Bottom Portion */}
+      <div className="absolute inset-x-0 bottom-0 w-full h-32 sm:h-44 pointer-events-none z-10 overflow-hidden">
+        <div className="relative w-full h-full opacity-60">
+          <Image
+            src="/images/water-wave.png"
+            alt="Flowing Water Wave Layer"
+            fill
+            className="object-cover object-bottom"
+          />
+        </div>
+      </div>
     </section>
   );
 };
-
