@@ -18,6 +18,7 @@ export const Hero: React.FC = () => {
 
   return (
     <section
+      id="hero"
       onMouseMove={handleMouseMove}
       className="relative min-h-[95vh] pt-32 pb-24 flex items-center overflow-hidden bg-[#020D1A]"
     >

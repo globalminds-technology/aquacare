@@ -12,8 +12,8 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #F7FCFF;
-  color: #073B67;
+  background-color: #020D1A;
+  color: #FFFFFF;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7FCFF;
+  background: #020D1A;
 }
 ::-webkit-scrollbar-thumb {
   background: #00B8E6;
