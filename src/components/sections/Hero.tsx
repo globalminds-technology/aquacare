@@ -52,11 +52,6 @@ export const Hero: React.FC = () => {
               </p>
             </div>
 
-            {/* Supporting Description */}
-            <p className="text-sm sm:text-base text-[#DDF5FF]/90 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Experience ultra-pure alkaline drinking water engineered for Chennai’s groundwater and metro supply. 100% genuine factory-sealed purifiers with guaranteed lower prices and same-day certified technician installation.
-            </p>
-
             {/* Key Micro-Pill Points */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 pt-1">
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-[#031C38]/80 text-[#DDF5FF] border border-[#00B8E6]/30 backdrop-blur-md">
