@@ -12,27 +12,38 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export const Services: React.FC = () => {
   return (
-    <section id="services" className="py-20 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-24 bg-[#020D1A] relative overflow-hidden">
+      {/* 1. Theme Underwater Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/backgrounds/aqua-theme-bg.webp"
+          alt="Aqua Theme Background"
+          fill
+          className="object-cover object-center opacity-85"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020D1A]/80 via-[#020D1A]/55 to-[#020D1A]/85 pointer-events-none" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0077D9]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#00D2FF]">
               CERTIFIED TECHNICIANS IN CHENNAI
             </span>
-            <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-[#073B67] mt-1">
+            <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-white mt-1">
               Installation & Services
             </h2>
-            <p className="text-sm text-gray-500 mt-2 max-w-xl">
+            <p className="text-sm text-[#DDF5FF]/80 mt-2 max-w-xl">
               Professional, clean, same-day service by factory-trained technicians across all Chennai zones.
             </p>
           </div>
 
           <a
             href="tel:+919444412345"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDF5FF] text-[#0077D9] font-bold text-xs hover:bg-[#0077D9] hover:text-white transition-all mt-4 sm:mt-0"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] text-[#020D1A] font-extrabold text-xs hover:shadow-[0_0_20px_rgba(0,210,255,0.6)] hover:scale-105 active:scale-95 transition-all mt-4 sm:mt-0 shadow-[0_4px_15px_rgba(0,184,230,0.4)]"
           >
-            <Phone className="w-4 h-4" /> Book Technician: +91 94444 12345
+            <Phone className="w-4 h-4 text-[#020D1A]" /> Book Technician: +91 94444 12345
           </a>
         </div>
 
@@ -43,30 +54,30 @@ export const Services: React.FC = () => {
             {SERVICES.map((serv) => (
               <div
                 key={serv.id}
-                className="group p-5 rounded-3xl bg-[#F7FCFF] border border-[#DDF5FF] hover:border-[#00B8E6] shadow-sm hover:shadow-aqua-md transition-all duration-300"
+                className="group p-5 rounded-3xl bg-[#031B36]/80 backdrop-blur-xl border border-[#00B8E6]/30 hover:border-[#00D2FF] hover:bg-[#032347]/90 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(0,210,255,0.2)] transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-[#DDF5FF] flex items-center justify-center group-hover:bg-[#0077D9] transition-colors shadow-sm">
-                    <div className="group-hover:[&_svg]:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-2xl bg-[#00D2FF]/15 border border-[#00D2FF]/30 flex items-center justify-center group-hover:bg-[#00D2FF] transition-all shadow-sm">
+                    <div className="text-[#00D2FF] group-hover:text-[#020D1A] transition-colors">
                       {serviceIcons[serv.icon]}
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#DDF5FF] text-[#0077D9]">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40">
                     {serv.badge}
                   </span>
                 </div>
 
-                <h3 className="font-sans font-bold text-base text-[#073B67] group-hover:text-[#0077D9] transition-colors">
+                <h3 className="font-sans font-bold text-base text-white group-hover:text-[#00D2FF] transition-colors">
                   {serv.title}
                 </h3>
-                <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
+                <p className="text-xs text-[#DDF5FF]/70 mt-1.5 leading-relaxed">
                   {serv.description}
                 </p>
 
-                <ul className="mt-3 space-y-1 text-[11px] text-[#073B67] border-t border-[#DDF5FF] pt-2">
+                <ul className="mt-3 space-y-1 text-[11px] text-[#DDF5FF]/85 border-t border-white/10 pt-2">
                   {serv.features.map((feat, i) => (
                     <li key={i} className="flex items-center gap-1.5 font-medium">
-                      <Check className="w-3 h-3 text-[#00B8E6]" />
+                      <Check className="w-3.5 h-3.5 text-[#00D2FF]" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -77,8 +88,8 @@ export const Services: React.FC = () => {
 
           {/* Technician Visual Showcase Card */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#073B67] to-[#0077D9] p-6 text-white shadow-aqua-lg">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-5 border border-white/20">
+            <div className="relative rounded-3xl overflow-hidden bg-[#031B36]/85 backdrop-blur-2xl p-6 text-white shadow-[0_15px_45px_rgba(0,0,0,0.6)] border border-[#00B8E6]/40">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-5 border border-white/15">
                 <Image
                   src="/images/lifestyle/technician.webp"
                   alt="Certified Aqua Care Technician installing water purifier"
@@ -88,8 +99,8 @@ export const Services: React.FC = () => {
               </div>
 
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-[#DDF5FF] text-xs font-semibold">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#00B8E6]" />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 text-xs font-semibold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#00D2FF]" />
                   Verified & Background-Checked
                 </div>
 
@@ -103,7 +114,7 @@ export const Services: React.FC = () => {
 
                 <div className="pt-2 flex items-center justify-between border-t border-white/10 text-xs text-[#DDF5FF]">
                   <div>
-                    <span className="font-bold text-white text-base">4.9/5 ★</span>
+                    <span className="font-bold text-[#00D2FF] text-base">4.9/5 ★</span>
                     <span className="block text-[10px] text-[#DDF5FF]/70">Technician Rating</span>
                   </div>
                   <div>
@@ -111,7 +122,7 @@ export const Services: React.FC = () => {
                     <span className="block text-[10px] text-[#DDF5FF]/70">Avg. Chennai Response</span>
                   </div>
                   <div>
-                    <span className="font-bold text-white text-base">100%</span>
+                    <span className="font-bold text-[#00D2FF] text-base">100%</span>
                     <span className="block text-[10px] text-[#DDF5FF]/70">Genuine Spare Parts</span>
                   </div>
                 </div>

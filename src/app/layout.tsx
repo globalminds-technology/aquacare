@@ -31,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[#F7FCFF] text-[#073B67] font-body antialiased selection:bg-[#00B8E6] selection:text-white">
+      <body className="min-h-screen bg-[#020D1A] text-white font-body antialiased selection:bg-[#00D2FF] selection:text-[#020D1A]">
         <SplashScreen />
         <Navbar />
         <main className="relative z-10">{children}</main>

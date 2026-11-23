@@ -19,14 +19,14 @@ export const CustomerReviews: React.FC = () => {
   const review = TESTIMONIALS[currentIndex];
 
   return (
-    <div id="reviews" className="bg-[#F7FCFF] rounded-3xl p-6 sm:p-8 border border-[#DDF5FF] shadow-sm flex flex-col justify-between h-full">
+    <div id="reviews" className="bg-[#031B36]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-[#00B8E6]/40 shadow-[0_15px_45px_rgba(0,0,0,0.6)] flex flex-col justify-between h-full text-white">
       <div>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#0077D9]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#00D2FF]">
               CUSTOMER REVIEWS
             </span>
-            <h3 className="font-sans font-bold text-xl text-[#073B67] mt-0.5">
+            <h3 className="font-sans font-bold text-xl sm:text-2xl text-white mt-0.5">
               Loved by Thousands of Families in Chennai
             </h3>
           </div>
@@ -36,14 +36,14 @@ export const CustomerReviews: React.FC = () => {
             <button
               onClick={prev}
               aria-label="Previous review"
-              className="w-8 h-8 rounded-full border border-[#DDF5FF] bg-white hover:bg-[#DDF5FF] text-[#073B67] flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full border border-[#00B8E6]/30 bg-[#021020]/75 hover:bg-[#00D2FF] hover:text-[#020D1A] text-white flex items-center justify-center transition-colors shadow-sm"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={next}
               aria-label="Next review"
-              className="w-8 h-8 rounded-full border border-[#DDF5FF] bg-white hover:bg-[#DDF5FF] text-[#073B67] flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full border border-[#00B8E6]/30 bg-[#021020]/75 hover:bg-[#00D2FF] hover:text-[#020D1A] text-white flex items-center justify-center transition-colors shadow-sm"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -55,18 +55,18 @@ export const CustomerReviews: React.FC = () => {
           {Array.from({ length: 5 }).map((_, i) => (
             <Star key={i} className="w-4 h-4 fill-current" />
           ))}
-          <span className="text-xs font-bold text-[#073B67] ml-1.5">5.0 / 5.0</span>
+          <span className="text-xs font-bold text-white ml-1.5">5.0 / 5.0</span>
         </div>
 
         {/* Review Quote Text */}
-        <p className="text-sm text-gray-700 leading-relaxed italic mb-6">
+        <p className="text-sm text-[#DDF5FF]/90 leading-relaxed italic mb-6">
           &ldquo;{review.text}&rdquo;
         </p>
       </div>
 
       {/* Reviewer Profile */}
-      <div className="flex items-center gap-3 pt-4 border-t border-[#DDF5FF]">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#00B8E6] flex-shrink-0">
+      <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#00D2FF] flex-shrink-0 shadow-[0_0_15px_rgba(0,210,255,0.4)]">
           <Image
             src={review.avatar}
             alt={review.name}
@@ -75,10 +75,10 @@ export const CustomerReviews: React.FC = () => {
           />
         </div>
         <div>
-          <h4 className="font-sans font-bold text-sm text-[#073B67]">
+          <h4 className="font-sans font-bold text-sm text-white">
             {review.name}
           </h4>
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-[#DDF5FF]/60">
             {review.location} &bull; Bought {review.purifierBought}
           </span>
         </div>

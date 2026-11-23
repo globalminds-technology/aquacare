@@ -23,49 +23,56 @@ export const WhyChoose: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="py-20 bg-gradient-to-b from-[#F7FCFF] via-[#DDF5FF]/40 to-white relative overflow-hidden">
-      {/* Background Soft Aqua Lighting */}
-      <div className="absolute top-1/2 -right-40 -translate-y-1/2 w-96 h-96 bg-[#00B8E6]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -left-20 w-80 h-80 bg-[#0077D9]/10 rounded-full blur-3xl pointer-events-none" />
+    <section id="why-us" className="py-24 bg-[#020D1A] relative overflow-hidden">
+      {/* 1. Theme Underwater Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/backgrounds/aqua-theme-bg.webp"
+          alt="Aqua Theme Background"
+          fill
+          className="object-cover object-center opacity-85"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020D1A]/80 via-[#020D1A]/55 to-[#020D1A]/85 pointer-events-none" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Tag */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#0077D9]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#00D2FF]">
             05 — WHY AQUA CARE SHOP?
           </span>
-          <h2 className="font-sans font-extrabold text-3xl sm:text-5xl text-[#073B67] mt-1">
+          <h2 className="font-sans font-extrabold text-3xl sm:text-5xl text-white mt-1">
             Why Pay More Elsewhere?
           </h2>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-[#DDF5FF]/80 mt-2">
             Get the same genuine branded purifiers with guaranteed lower prices, free installation, and authentic local Chennai service backup.
           </p>
         </div>
 
         {/* 1. Marketplace Price Advantage Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-aqua-md border border-[#DDF5FF] mb-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-[#031B36]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 shadow-[0_15px_45px_rgba(0,0,0,0.6)] border border-[#00B8E6]/40 mb-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 space-y-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DDF5FF] text-[#0077D9] text-xs font-bold uppercase tracking-wider">
-              <TrendingDown className="w-3.5 h-3.5 text-[#0077D9]" /> Direct Brand Savings
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 text-xs font-bold uppercase tracking-wider">
+              <TrendingDown className="w-3.5 h-3.5 text-[#00D2FF]" /> Direct Brand Savings
             </div>
 
-            <h3 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#073B67] leading-tight">
+            <h3 className="font-sans font-extrabold text-2xl sm:text-3xl text-white leading-tight">
               Direct Savings vs Online Marketplaces
             </h3>
 
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-[#DDF5FF]/80 leading-relaxed">
               When you purchase on Amazon or Flipkart, high marketplace commissions inflate the price. At Aqua Care Shop Chennai, we supply directly from authorized manufacturers to your home.
             </p>
 
-            <div className="pt-2 flex flex-col gap-2 text-xs font-semibold text-[#073B67]">
+            <div className="pt-2 flex flex-col gap-2 text-xs font-semibold text-white">
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-[#00B8E6]" /> 100% Factory-Sealed Genuine Product
+                <Check className="w-4 h-4 text-[#00D2FF]" /> 100% Factory-Sealed Genuine Product
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-[#00B8E6]" /> Free Certified Doorstep Installation in Chennai
+                <Check className="w-4 h-4 text-[#00D2FF]" /> Free Certified Doorstep Installation in Chennai
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-[#00B8E6]" /> Official 1–2 Year Brand Service Warranty
+                <Check className="w-4 h-4 text-[#00D2FF]" /> Official 1–2 Year Brand Service Warranty
               </div>
             </div>
           </div>
@@ -73,58 +80,58 @@ export const WhyChoose: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col sm:flex-row items-center gap-6">
             <div className="flex-1 w-full space-y-3">
               {/* Amazon Comparison Card */}
-              <div className="flex items-center justify-between p-4 rounded-2xl bg-[#F7FCFF] border border-gray-200/70">
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-[#021020]/80 border border-white/10">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-white border border-gray-200 flex items-center justify-center font-bold text-xs text-gray-700">
+                  <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xs text-white">
                     a
                   </div>
                   <div>
-                    <span className="text-sm font-bold text-gray-800">Amazon India</span>
-                    <span className="block text-[10px] text-gray-400">Regular Marketplace Price</span>
+                    <span className="text-sm font-bold text-white">Amazon India</span>
+                    <span className="block text-[10px] text-white/50">Regular Marketplace Price</span>
                   </div>
                 </div>
-                <span className="font-sans font-bold text-base text-gray-600 line-through">
+                <span className="font-sans font-bold text-base text-white/50 line-through">
                   ₹18,999
                 </span>
               </div>
 
               {/* Flipkart Comparison Card */}
-              <div className="flex items-center justify-between p-4 rounded-2xl bg-[#F7FCFF] border border-gray-200/70">
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-[#021020]/80 border border-white/10">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center font-bold text-xs text-amber-600">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center font-bold text-xs text-amber-300">
                     f
                   </div>
                   <div>
-                    <span className="text-sm font-bold text-gray-800">Flipkart</span>
-                    <span className="block text-[10px] text-gray-400">Online Retail Price</span>
+                    <span className="text-sm font-bold text-white">Flipkart</span>
+                    <span className="block text-[10px] text-white/50">Online Retail Price</span>
                   </div>
                 </div>
-                <span className="font-sans font-bold text-base text-gray-600 line-through">
+                <span className="font-sans font-bold text-base text-white/50 line-through">
                   ₹18,499
                 </span>
               </div>
 
               {/* Aqua Care Shop Highlight Card */}
-              <div className="relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#0077D9] to-[#00B8E6] text-white shadow-aqua-md transform scale-[1.02]">
+              <div className="relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] text-[#020D1A] shadow-[0_0_30px_rgba(0,210,255,0.4)] transform scale-[1.02]">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white text-[#0077D9] flex items-center justify-center font-extrabold text-sm shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-[#020D1A] text-[#00D2FF] flex items-center justify-center font-extrabold text-sm shadow-sm">
                     💧
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-sans font-extrabold text-base sm:text-lg">Aqua Care Shop</span>
-                      <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
+                      <span className="font-sans font-black text-base sm:text-lg text-[#020D1A]">Aqua Care Shop</span>
+                      <span className="text-[10px] bg-[#020D1A]/20 px-2 py-0.5 rounded-full font-extrabold text-[#020D1A]">
                         Best Price
                       </span>
                     </div>
-                    <span className="block text-[11px] text-white/80">Includes Free Chennai Setup</span>
+                    <span className="block text-[11px] text-[#020D1A]/80 font-semibold">Includes Free Chennai Setup</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="font-sans font-black text-xl sm:text-2xl text-white">
+                  <span className="font-sans font-black text-xl sm:text-2xl text-[#020D1A]">
                     ₹14,999
                   </span>
-                  <span className="block text-[10px] text-emerald-200 font-bold uppercase tracking-wider">
+                  <span className="block text-[10px] text-[#020D1A] font-extrabold uppercase tracking-wider">
                     Instant ₹4,000 Direct Benefit
                   </span>
                 </div>
@@ -132,14 +139,14 @@ export const WhyChoose: React.FC = () => {
             </div>
 
             {/* Save Up to 27% Circular Badge */}
-            <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[#DDF5FF] to-white border-4 border-[#00B8E6] shadow-aqua-md flex flex-col items-center justify-center text-center p-2 flex-shrink-0 animate-float">
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+            <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-[#031B36]/90 border-4 border-[#00D2FF] shadow-[0_0_35px_rgba(0,210,255,0.4)] flex flex-col items-center justify-center text-center p-2 flex-shrink-0 animate-float backdrop-blur-md">
+              <span className="text-[10px] font-bold text-[#DDF5FF]/70 uppercase tracking-wider">
                 Save Up To
               </span>
-              <span className="font-sans font-black text-3xl sm:text-4xl text-[#0077D9] leading-none my-0.5">
+              <span className="font-sans font-black text-3xl sm:text-4xl text-[#00D2FF] leading-none my-0.5">
                 27%
               </span>
-              <span className="text-[10px] font-semibold text-[#073B67] leading-tight">
+              <span className="text-[10px] font-semibold text-white leading-tight">
                 Lower than Marketplaces
               </span>
             </div>
@@ -150,7 +157,7 @@ export const WhyChoose: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left: Pure Water Glass Asset */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            <div className="relative w-full aspect-[4/3] sm:aspect-square max-w-md rounded-3xl overflow-hidden bg-gradient-to-br from-[#DDF5FF]/80 to-[#F7FCFF] p-4 border border-[#00B8E6]/25 shadow-aqua-md flex items-center justify-center group">
+            <div className="relative w-full aspect-[4/3] sm:aspect-square max-w-md rounded-3xl overflow-hidden bg-[#031B36]/80 backdrop-blur-xl p-4 border border-[#00B8E6]/30 shadow-[0_12px_40px_rgba(0,0,0,0.5)] flex items-center justify-center group">
               {/* Pure Water Glass with Splashing Water Image */}
               <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
                 <Image
@@ -162,15 +169,15 @@ export const WhyChoose: React.FC = () => {
               </div>
 
               {/* Floating Quality Seal */}
-              <div className="absolute -bottom-2 -right-2 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-aqua-md border border-[#DDF5FF] flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-full bg-[#DDF5FF] text-[#0077D9] flex items-center justify-center">
+              <div className="absolute -bottom-2 -right-2 bg-[#021020]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.6)] border border-[#00D2FF]/40 flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-full bg-[#00D2FF]/20 text-[#00D2FF] flex items-center justify-center border border-[#00D2FF]/40">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="block font-sans font-bold text-xs text-[#073B67]">
+                  <span className="block font-sans font-bold text-xs text-white">
                     100% Pure & Healthy
                   </span>
-                  <span className="text-[10px] text-gray-500">
+                  <span className="text-[10px] text-[#DDF5FF]/70">
                     Chennai Water Certified
                   </span>
                 </div>
@@ -183,16 +190,16 @@ export const WhyChoose: React.FC = () => {
             {points.map((pt, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-white border border-[#DDF5FF] hover:border-[#00B8E6] shadow-sm hover:shadow-aqua-sm transition-all"
+                className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#031B36]/80 backdrop-blur-xl border border-[#00B8E6]/30 hover:border-[#00D2FF] shadow-sm hover:shadow-[0_10px_30px_rgba(0,210,255,0.2)] transition-all"
               >
-                <div className="w-8 h-8 rounded-full bg-[#0077D9] text-white flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#00D2FF] to-[#0077D9] text-[#020D1A] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-sans font-bold text-sm sm:text-base text-[#073B67]">
+                  <h4 className="font-sans font-bold text-sm sm:text-base text-white">
                     {pt.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#DDF5FF]/70 mt-1 leading-relaxed">
                     {pt.desc}
                   </p>
                 </div>

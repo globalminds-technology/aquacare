@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBenefits } from "@/components/sections/TrustBenefits";
 import { Categories } from "@/components/sections/Categories";
@@ -12,7 +13,7 @@ import { FAQ } from "@/components/sections/FAQ";
 
 export default function HomePage() {
   return (
-    <div className="relative">
+    <div className="relative bg-[#020D1A]">
       {/* 01 — Splash Screen is loaded globally in RootLayout */}
 
       {/* 02 — Immersive Hero Section + Trust & Benefits Capsule */}
@@ -38,8 +39,19 @@ export default function HomePage() {
       <PurifierFinder />
 
       {/* 09 & 10 — Customer Reviews & Frequently Asked Questions */}
-      <section className="py-20 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="reviews-faq" className="py-24 bg-[#020D1A] relative overflow-hidden">
+        {/* 1. Theme Underwater Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/backgrounds/aqua-theme-bg.webp"
+            alt="Aqua Theme Background"
+            fill
+            className="object-cover object-center opacity-85"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020D1A]/80 via-[#020D1A]/55 to-[#020D1A]/85 pointer-events-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {/* 09 — Customer Reviews */}
             <CustomerReviews />

@@ -112,20 +112,31 @@ export const PurifierFinder: React.FC = () => {
       : PRODUCTS[0]; // PureFlow RO+UV
 
   return (
-    <section id="quiz" className="py-20 bg-gradient-to-b from-[#F7FCFF] to-white relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="quiz" className="py-24 bg-[#020D1A] relative overflow-hidden">
+      {/* 1. Theme Underwater Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/backgrounds/aqua-theme-bg.webp"
+          alt="Aqua Theme Background"
+          fill
+          className="object-cover object-center opacity-85"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020D1A]/80 via-[#020D1A]/55 to-[#020D1A]/85 pointer-events-none" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Wizard Container Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-aqua-lg border border-[#DDF5FF] relative overflow-hidden">
+        <div className="bg-[#031B36]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 shadow-[0_15px_45px_rgba(0,0,0,0.6)] border border-[#00B8E6]/40 relative overflow-hidden text-white">
           {/* Header */}
           <div className="text-center max-w-xl mx-auto mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#DDF5FF] text-[#0077D9] text-xs font-bold uppercase tracking-wider mb-2">
-              <Droplets className="w-4 h-4 text-[#00B8E6]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 text-xs font-bold uppercase tracking-wider mb-2">
+              <Droplets className="w-4 h-4 text-[#00D2FF]" />
               <span>Interactive Purifier Finder</span>
             </div>
-            <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#073B67]">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-white">
               Find the Right Purifier for Your Home
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-[#DDF5FF]/80 mt-1">
               Answer 5 simple questions to get Chennai’s perfect water purifier recommendation.
             </p>
 
@@ -137,10 +148,10 @@ export const PurifierFinder: React.FC = () => {
                     key={i}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       i === currentStep
-                        ? "w-10 bg-[#0077D9]"
+                        ? "w-10 bg-[#00D2FF] shadow-[0_0_12px_#00D2FF]"
                         : i < currentStep
                         ? "w-4 bg-[#00B8E6]"
-                        : "w-4 bg-gray-200"
+                        : "w-4 bg-white/20"
                     }`}
                   />
                 ))}
@@ -152,13 +163,13 @@ export const PurifierFinder: React.FC = () => {
           {!showResult ? (
             <div className="space-y-6 animate-in fade-in duration-300">
               <div className="text-center">
-                <span className="text-xs font-bold text-[#0077D9] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#00D2FF] uppercase tracking-wider">
                   Step {currentStep + 1} of {questions.length}
                 </span>
-                <h3 className="font-sans font-bold text-lg sm:text-xl text-[#073B67] mt-1">
+                <h3 className="font-sans font-bold text-lg sm:text-xl text-white mt-1">
                   {questions[currentStep].title}
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-[#DDF5FF]/70 mt-1">
                   {questions[currentStep].subtitle}
                 </p>
               </div>
@@ -174,15 +185,15 @@ export const PurifierFinder: React.FC = () => {
                         opt.value
                       )
                     }
-                    className="p-4 rounded-2xl border border-[#DDF5FF] hover:border-[#0077D9] hover:bg-[#DDF5FF]/40 bg-[#F7FCFF] text-left transition-all flex flex-col justify-between group cursor-pointer"
+                    className="p-4 rounded-2xl border border-[#00B8E6]/25 hover:border-[#00D2FF] hover:bg-[#0077D9]/25 bg-[#021020]/75 text-left transition-all flex flex-col justify-between group cursor-pointer"
                   >
                     <div className="flex items-center justify-between w-full">
-                      <span className="font-sans font-bold text-sm text-[#073B67] group-hover:text-[#0077D9]">
+                      <span className="font-sans font-bold text-sm text-white group-hover:text-[#00D2FF]">
                         {opt.label}
                       </span>
-                      <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#0077D9] transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 text-white/40 group-hover:text-[#00D2FF] transition-transform group-hover:translate-x-1" />
                     </div>
-                    <span className="text-xs text-gray-500 mt-1.5">{opt.desc}</span>
+                    <span className="text-xs text-[#DDF5FF]/70 mt-1.5">{opt.desc}</span>
                   </button>
                 ))}
               </div>
@@ -192,7 +203,7 @@ export const PurifierFinder: React.FC = () => {
                 <div className="pt-2 flex justify-start">
                   <button
                     onClick={() => setCurrentStep((prev) => prev - 1)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-[#073B67] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#DDF5FF]/70 hover:text-white transition-colors"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" /> Previous Question
                   </button>
@@ -202,16 +213,16 @@ export const PurifierFinder: React.FC = () => {
           ) : (
             /* Results Screen */
             <div className="space-y-6 text-center animate-in zoom-in-95 duration-300">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold">
                 <Sparkles className="w-3.5 h-3.5" /> Perfect Match for Your Chennai Home
               </div>
 
-              <h3 className="font-sans font-extrabold text-2xl text-[#073B67]">
+              <h3 className="font-sans font-extrabold text-2xl text-white">
                 Recommended: {recommendedProduct.name}
               </h3>
 
               {/* Product Match Card */}
-              <div className="max-w-md mx-auto p-5 rounded-3xl bg-[#F7FCFF] border border-[#DDF5FF] shadow-aqua-sm flex flex-col sm:flex-row items-center gap-4 text-left">
+              <div className="max-w-md mx-auto p-5 rounded-3xl bg-[#021020]/80 border border-[#00B8E6]/35 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row items-center gap-4 text-left">
                 <div className="relative w-28 h-28 flex-shrink-0">
                   <Image
                     src={recommendedProduct.image}
@@ -221,24 +232,24 @@ export const PurifierFinder: React.FC = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0077D9]">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#00D2FF]">
                     {recommendedProduct.brand}
                   </span>
-                  <h4 className="font-sans font-bold text-base text-[#073B67]">
+                  <h4 className="font-sans font-bold text-base text-white">
                     {recommendedProduct.name}
                   </h4>
                   <div className="flex items-baseline gap-2 mt-1">
-                    <span className="font-sans font-extrabold text-lg text-[#073B67]">
+                    <span className="font-sans font-extrabold text-lg text-[#00D2FF]">
                       ₹{recommendedProduct.sellingPrice.toLocaleString("en-IN")}
                     </span>
-                    <span className="text-xs text-gray-400 line-through">
+                    <span className="text-xs text-white/40 line-through">
                       ₹{recommendedProduct.originalPrice.toLocaleString("en-IN")}
                     </span>
-                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                    <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 border border-emerald-500/30 px-1.5 py-0.5 rounded">
                       {recommendedProduct.discount}% OFF
                     </span>
                   </div>
-                  <p className="text-[11px] text-gray-500 mt-1.5">
+                  <p className="text-[11px] text-[#DDF5FF]/70 mt-1.5">
                     Includes Free Same-Day Installation in Chennai
                   </p>
                 </div>
@@ -248,13 +259,13 @@ export const PurifierFinder: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                 <button
                   onClick={() => addItem(recommendedProduct)}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#0077D9] to-[#00B8E6] text-white font-bold text-sm shadow-aqua-md hover:shadow-aqua-glow transition-all flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] text-[#020D1A] font-extrabold text-sm shadow-[0_0_20px_rgba(0,210,255,0.6)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
-                  <ShoppingCart className="w-4 h-4" /> Add to Cart & Book Installation
+                  <ShoppingCart className="w-4 h-4 text-[#020D1A]" /> Add to Cart & Book Installation
                 </button>
                 <button
                   onClick={resetQuiz}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-gray-100 text-[#073B67] hover:bg-gray-200 font-semibold text-xs transition-colors flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 border border-white/20"
                 >
                   <RefreshCcw className="w-3.5 h-3.5" /> Retake Quiz
                 </button>
