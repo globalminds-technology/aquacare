@@ -33,14 +33,13 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
+  { name: "Categories", href: "#categories" },
     { name: "Products", href: "#products" },
-    { name: "Categories", href: "#categories" },
     { name: "Brands", href: "#brands" },
     { name: "Services", href: "#services" },
     { name: "Purifier Quiz", href: "#quiz" },
     { name: "Why Us", href: "#why-us" },
     { name: "Reviews", href: "#reviews" },
-    { name: "FAQs", href: "#faq" },
   ];
 
   return (
