@@ -1,6 +1,5 @@
 import React from "react";
 import { Hero } from "@/components/sections/Hero";
-import { TrustBenefits } from "@/components/sections/TrustBenefits";
 import { Categories } from "@/components/sections/Categories";
 import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
 import { WhyChoose } from "@/components/sections/WhyChoose";
@@ -15,9 +14,8 @@ export default function HomePage() {
     <div className="relative bg-[#020D1A]">
       {/* 01 — Splash Screen is loaded globally in RootLayout */}
 
-      {/* 02 — Immersive Hero Section + Trust & Benefits Capsule */}
+      {/* 02 — Immersive Hero Section */}
       <Hero />
-      <TrustBenefits />
 
       {/* 03 — Shop by Brand (Authorised Brand Showcase directly below Hero) */}
       <BrandShowcase />
