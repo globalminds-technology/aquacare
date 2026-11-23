@@ -3,12 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight, Phone, ShieldCheck, Truck, Star } from "lucide-react";
+import { HeroWaterFlow } from "./HeroWaterFlow";
 
 export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] lg:min-h-[92vh] pt-28 sm:pt-36 pb-16 sm:pb-24 flex items-center overflow-hidden bg-[#031427]"
+      className="relative w-full min-h-screen lg:h-screen flex items-center overflow-hidden bg-[#031427] select-none"
     >
       {/* 1. Cinematic Photorealistic Background (Dispenser pouring into glass with bubbles & indoor plant) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -18,7 +19,7 @@ export const Hero: React.FC = () => {
           fill
           priority
           quality={95}
-          className="object-cover object-right lg:object-center opacity-95"
+          className="object-cover object-right lg:object-center opacity-95 scale-[1.01]"
         />
 
         {/* Ambient Dark Cyan Vignette on Left Side for Pristine Text Contrast */}
@@ -29,8 +30,11 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020D1A] to-transparent pointer-events-none" />
       </div>
 
-      {/* 2. Hero Content Container */}
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* 2. Realistic Animated Graphic Water Flow & Glass Effervescence Canvas */}
+      <HeroWaterFlow />
+
+      {/* 3. Hero Content Container */}
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pt-20 sm:pt-24 pb-12 sm:pb-16">
         <div className="max-w-2xl space-y-6 text-left">
           {/* Top Kicker */}
           <div className="inline-flex items-center gap-2">
