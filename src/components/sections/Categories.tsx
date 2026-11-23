@@ -128,8 +128,6 @@ export const Categories: React.FC = () => {
     if (isRightSwipe) prev();
   };
 
-  const activeCategory = CATEGORIES[activeIndex];
-
   return (
     <section
       id="categories"
@@ -243,36 +241,6 @@ export const Categories: React.FC = () => {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        {/* Active Category Information Banner & Action */}
-        <div className="mt-4 sm:mt-6 max-w-xl mx-auto text-center space-y-3 bg-[#031B36]/80 backdrop-blur-xl border border-[#00B8E6]/30 rounded-3xl p-5 shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
-          <div className="flex items-center justify-center gap-2">
-            <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40">
-              {activeCategory.badge}
-            </span>
-            <span className="text-xs font-semibold text-[#DDF5FF]/70">
-              {activeCategory.itemCount} Models in Stock
-            </span>
-          </div>
-
-          <h3 className="font-sans font-bold text-xl sm:text-2xl text-white">
-            {activeCategory.name}
-          </h3>
-
-          <p className="text-xs sm:text-sm text-[#DDF5FF]/80 leading-relaxed max-w-md mx-auto">
-            {activeCategory.description}
-          </p>
-
-          <div className="pt-2 flex items-center justify-center">
-            <a
-              href="#products"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-sans font-extrabold text-xs sm:text-sm text-[#020D1A] bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] shadow-[0_0_20px_rgba(0,210,255,0.6)] hover:shadow-[0_0_35px_rgba(0,210,255,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-            >
-              <span>{activeCategory.cta}</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
 
