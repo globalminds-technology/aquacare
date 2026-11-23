@@ -136,89 +136,83 @@ export const Navbar: React.FC = () => {
           isScrolled ? "py-2 sm:py-2.5" : "py-3 sm:py-3.5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          {/* Main Floating Capsule - Theme Colored (Deep Ocean Frosted Glass) */}
-          <div className="bg-[#021528]/85 backdrop-blur-2xl rounded-full px-3 sm:px-4 py-2 border border-[#00B8E6]/40 shadow-[0_8px_32px_rgba(0,184,230,0.22),inset_0_1px_1px_rgba(255,255,255,0.15)] flex items-center justify-between gap-1.5 sm:gap-2.5 transition-all">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 flex justify-center">
+          {/* Main Floating Capsule: Compact & Centered (No dead space next to Logo or FAQs!) */}
+          <div className="w-full lg:w-fit bg-[#021528]/90 backdrop-blur-2xl rounded-full px-3.5 sm:px-5 py-2 border border-[#00B8E6]/40 shadow-[0_8px_32px_rgba(0,184,230,0.25),inset_0_1px_1px_rgba(255,255,255,0.15)] flex items-center justify-between lg:justify-center gap-2 sm:gap-3 xl:gap-3.5 transition-all">
             
-            {/* Left: Brand Logo (Enlarged) + ScrollTide Glass Tabs (Compact, Zero dead space) */}
-            <div className="flex items-center gap-2 xl:gap-3 min-w-0">
-              {/* Brand Logo - Enlarged Size */}
-              <Link href="/" className="flex items-center group flex-shrink-0 pl-1">
-                <div className="relative h-8 sm:h-9 xl:h-10 w-32 sm:w-38 xl:w-44 transition-transform duration-300 group-hover:scale-105">
-                  <Image
-                    src="/brand/aqua-care-logo-dark-theme.png"
-                    alt="Aqua Care Shop Logo"
-                    fill
-                    className="object-contain object-left"
-                    priority
-                  />
-                </div>
-              </Link>
+            {/* 1. Brand Logo: Enlarged & Tightly Positioned */}
+            <Link href="/" className="flex items-center group flex-shrink-0">
+              <div className="relative h-9 sm:h-10 xl:h-11 w-36 sm:w-42 xl:w-48 transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/brand/aqua-care-logo-dark-theme.png"
+                  alt="Aqua Care Shop Logo"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+            </Link>
 
-              {/* Thin subtle divider */}
-              <div className="h-5 w-px bg-white/15 hidden lg:block flex-shrink-0" />
-
-              {/* ========================================================= */}
-              {/* ScrollTide Glass Tabs (Theme Colored)                     */}
-              {/* Tight, snug spacing around Logo & FAQs                    */}
-              {/* ========================================================= */}
-              <nav
-                ref={navTrackRef}
-                onMouseLeave={() => setHoverTab(null)}
-                className="hidden lg:flex items-center relative p-1 rounded-full bg-[#010E1C]/85 border border-[#00B8E6]/25 backdrop-blur-xl shadow-inner"
+            {/* ========================================================= */}
+            {/* 2. ScrollTide Glass Tabs (Theme-Matched Aquamarine Track)  */}
+            {/* Sits right next to Logo, and ends right next to Search     */}
+            {/* ========================================================= */}
+            <nav
+              ref={navTrackRef}
+              onMouseLeave={() => setHoverTab(null)}
+              className="hidden lg:flex items-center relative p-1 rounded-full bg-[#010D1A]/90 border border-[#00B8E6]/30 backdrop-blur-xl shadow-inner flex-shrink-0"
+            >
+              {/* The Liquid Glass Lens (Cyan Floating Indicator) */}
+              <div
+                className="absolute top-1 bottom-1 rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"
+                style={{
+                  left: `${indicatorStyle.left}px`,
+                  width: `${indicatorStyle.width}px`,
+                  opacity: indicatorStyle.opacity,
+                  background:
+                    "linear-gradient(135deg, rgba(0,210,255,0.35) 0%, rgba(0,119,217,0.45) 100%)",
+                  boxShadow:
+                    "0 0 20px rgba(0, 210, 255, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.5)",
+                  border: "1.5px solid rgba(0, 210, 255, 0.8)",
+                }}
               >
-                {/* 1. The Liquid Glass Lens (Cyan Floating Indicator) */}
-                <div
-                  className="absolute top-1 bottom-1 rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"
-                  style={{
-                    left: `${indicatorStyle.left}px`,
-                    width: `${indicatorStyle.width}px`,
-                    opacity: indicatorStyle.opacity,
-                    background:
-                      "linear-gradient(135deg, rgba(0,210,255,0.28) 0%, rgba(0,119,217,0.35) 100%)",
-                    boxShadow:
-                      "0 0 18px rgba(0, 210, 255, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.45)",
-                    border: "1px solid rgba(0, 210, 255, 0.65)",
-                  }}
-                >
-                  {/* Specular Prism Glint */}
-                  <div className="absolute inset-x-2.5 top-0.5 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-[#00D2FF] to-transparent" />
-                </div>
+                {/* Specular Prism Glint */}
+                <div className="absolute inset-x-2.5 top-0.5 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-[#00D2FF] to-transparent" />
+              </div>
 
-                {/* 2. Interactive Navigation Options */}
-                {NAV_LINKS.map((link, idx) => {
-                  const isActive = activeTab === idx;
-                  const isHovered = hoverTab === idx;
+              {/* Interactive Navigation Options (Theme Color Matched) */}
+              {NAV_LINKS.map((link, idx) => {
+                const isActive = activeTab === idx;
+                const isHovered = hoverTab === idx;
 
-                  return (
-                    <a
-                      key={link.id}
-                      ref={(el) => {
-                        tabsRef.current[idx] = el;
-                      }}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href, idx)}
-                      onMouseEnter={() => setHoverTab(idx)}
-                      className={`relative z-10 text-[11px] xl:text-xs font-semibold px-2.5 xl:px-3 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer select-none flex items-center gap-1 ${
-                        isActive || isHovered
-                          ? "text-white font-extrabold drop-shadow-[0_0_12px_rgba(0,210,255,0.85)]"
-                          : "text-[#DDF5FF]/75 hover:text-[#00D2FF]"
-                      }`}
-                    >
-                      {link.name}
-                    </a>
-                  );
-                })}
-              </nav>
-            </div>
+                return (
+                  <a
+                    key={link.id}
+                    ref={(el) => {
+                      tabsRef.current[idx] = el;
+                    }}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href, idx)}
+                    onMouseEnter={() => setHoverTab(idx)}
+                    className={`relative z-10 text-[11px] xl:text-xs font-semibold px-2.5 xl:px-3 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer select-none flex items-center gap-1 ${
+                      isActive || isHovered
+                        ? "text-white font-extrabold drop-shadow-[0_0_12px_rgba(0,210,255,0.9)]"
+                        : "text-[#9BE8FF]/80 hover:text-[#00D2FF]"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
+            </nav>
 
-            {/* Right: Search, Account, Cart & Shop Now (Snug Spacing next to FAQs) */}
+            {/* 3. Right: Search, Account, Cart & Shop Now (Directly next to FAQs!) */}
             <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
               {/* Search Toggle */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label="Search purifiers"
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#DDF5FF] hover:text-[#00D2FF] hover:bg-white/10 transition-all border border-transparent hover:border-[#00D2FF]/30"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#9BE8FF] hover:text-[#00D2FF] hover:bg-white/10 transition-all border border-transparent hover:border-[#00D2FF]/30"
               >
                 <Search className="w-4 h-4" />
               </button>
@@ -227,7 +221,7 @@ export const Navbar: React.FC = () => {
               <button
                 onClick={() => setAccountModalOpen(true)}
                 aria-label="User account"
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#DDF5FF] hover:text-[#00D2FF] hover:bg-white/10 transition-all border border-transparent hover:border-[#00D2FF]/30"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#9BE8FF] hover:text-[#00D2FF] hover:bg-white/10 transition-all border border-transparent hover:border-[#00D2FF]/30"
               >
                 <User className="w-4 h-4" />
               </button>
@@ -258,7 +252,7 @@ export const Navbar: React.FC = () => {
               {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden w-8 h-8 rounded-full flex items-center justify-center text-[#DDF5FF] hover:bg-white/10 ml-0.5"
+                className="lg:hidden w-8 h-8 rounded-full flex items-center justify-center text-[#9BE8FF] hover:bg-white/10 ml-0.5"
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 text-[#00D2FF]" /> : <Menu className="w-5 h-5 text-white" />}
@@ -275,7 +269,7 @@ export const Navbar: React.FC = () => {
                 placeholder="Search RO Purifiers, Kent, AO Smith, Alkaline..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-none outline-none text-sm text-white placeholder:text-[#DDF5FF]/40"
+                className="w-full bg-transparent border-none outline-none text-sm text-white placeholder:text-[#9BE8FF]/40"
                 autoFocus
               />
               <a
@@ -290,7 +284,7 @@ export const Navbar: React.FC = () => {
               </a>
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-[#DDF5FF]/60 hover:text-white"
+                className="text-[#9BE8FF]/60 hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -313,7 +307,7 @@ export const Navbar: React.FC = () => {
                       className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                         isActive
                           ? "bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 font-bold shadow-sm"
-                          : "text-[#DDF5FF]/80 hover:bg-white/10 hover:text-white"
+                          : "text-[#9BE8FF]/80 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       {link.name}
@@ -347,7 +341,7 @@ export const Navbar: React.FC = () => {
           <div className="bg-[#031B38] text-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-[#00B8E6]/40 relative animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setAccountModalOpen(false)}
-              className="absolute top-4 right-4 text-[#DDF5FF]/60 hover:text-white"
+              className="absolute top-4 right-4 text-[#9BE8FF]/60 hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
@@ -356,13 +350,13 @@ export const Navbar: React.FC = () => {
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <h3 className="font-sans font-bold text-lg text-white">Aqua Care Login</h3>
-              <p className="text-xs text-[#DDF5FF]/70 mt-1 mb-4">
+              <p className="text-xs text-[#9BE8FF]/70 mt-1 mb-4">
                 Access your orders, warranty certificates, and technician service bookings.
               </p>
               <input
                 type="tel"
                 placeholder="Enter 10-digit Mobile Number"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#00B8E6]/30 bg-[#010E1C] text-white text-sm focus:border-[#00D2FF] outline-none mb-3 placeholder:text-[#DDF5FF]/40"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#00B8E6]/30 bg-[#010E1C] text-white text-sm focus:border-[#00D2FF] outline-none mb-3 placeholder:text-[#9BE8FF]/40"
               />
               <button
                 onClick={() => setAccountModalOpen(false)}
