@@ -40,10 +40,10 @@ export const Services: React.FC = () => {
           </div>
 
           <a
-            href="tel:+919444412345"
+            href="tel:+916383321623"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] text-[#020D1A] font-extrabold text-xs hover:shadow-[0_0_20px_rgba(0,210,255,0.6)] hover:scale-105 active:scale-95 transition-all mt-4 sm:mt-0 shadow-[0_4px_15px_rgba(0,184,230,0.4)]"
           >
-            <Phone className="w-4 h-4 text-[#020D1A]" /> Book Technician: +91 94444 12345
+            <Phone className="w-4 h-4 text-[#020D1A]" /> Book Technician: +91-6383321623
           </a>
         </div>
 

@@ -6,9 +6,9 @@ import { CartDrawer } from "@/components/layout/CartDrawer";
 import { SplashScreen } from "@/components/sections/SplashScreen";
 
 export const metadata: Metadata = {
-  title: "Aqua Care Shop — Chennai's Leading Destination for Water Purifiers",
+  title: "Aqua Care Hi-Tech Systems | Water Purifiers in Chennai, Cheaper Than Amazon & Flipkart",
   description:
-    "Chennai's Leading Destination for Water Purifiers, at Lower Prices Than Amazon & Flipkart. 100% Genuine Purifiers with Free Certified Technician Installation in Chennai.",
+    "Chennai's leading water purifier store since 2008. 8 brands, 130+ models, lower prices than Amazon & Flipkart with free doorstep delivery & certified installation across Chennai. Call +91-6383321623.",
   icons: {
     icon: "/brand/favicon.svg",
     shortcut: "/brand/favicon.svg",

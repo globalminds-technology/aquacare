@@ -207,16 +207,16 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Velachery, Chennai',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
     rating: 5,
-    text: 'Excellent product and installation service! We checked Amazon and Flipkart, but Aqua Care Shop gave us ₹3,500 less price with same-day technician installation in Velachery. The water tastes remarkably sweet.',
+    text: 'Excellent product and installation service! We checked Amazon and Flipkart, but Aqua Care Hi-Tech Systems gave us ₹3,500 lower price with same-day technician installation in Velachery. The water tastes remarkably sweet.',
     purifierBought: 'PureFlow RO + UV',
   },
   {
     id: 't-2',
     name: 'Karthik Ramanathan',
-    location: 'Anna Nagar, Chennai',
+    location: 'Adambakkam, Chennai',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     rating: 5,
-    text: 'Our borewell TDS was above 1400. Aqua Care Shop team tested our water right at home, suggested AquaMax Alkaline, and fitted it neatly within 3 hours. Great customer care and real price benefit!',
+    text: 'Our borewell TDS was above 1400. Aqua Care Hi-Tech Systems team tested our water right at home, suggested AquaMax Alkaline, and fitted it neatly within 3 hours. Great customer care and real price benefit!',
     purifierBought: 'AquaMax Alkaline Active+',
   },
   {
@@ -234,12 +234,12 @@ export const FAQS: FAQItem[] = [
   {
     id: 'faq-1',
     question: 'Which water purifier is suitable for my home in Chennai?',
-    answer: 'The choice depends on your water source and TDS level. For Chennai Metro Corporation water (TDS < 300), a UV/UF purifier is ideal. For borewell or tanker water (TDS > 500 up to 2000), an RO + MTDS or Alkaline purifier is required. You can also use our interactive Purifier Finder or call us for free water testing.',
+    answer: 'The choice depends on your water source and TDS level. For Chennai Metro Corporation water (TDS < 300), a UV/UF purifier is ideal. For borewell or tanker water (TDS > 500 up to 2000), an RO + MTDS or Alkaline purifier is required. You can also use our interactive Purifier Finder or call us at +91-6383321623 for free water testing.',
   },
   {
     id: 'faq-2',
     question: 'Do you provide free installation across Chennai?',
-    answer: 'Yes! Every purifier purchased from Aqua Care Shop includes professional doorstep installation by certified technicians within 4 to 24 hours anywhere in Chennai, including Tambaram, OMR, Anna Nagar, and Velachery.',
+    answer: 'Yes! Every purifier purchased from Aqua Care Hi-Tech Systems includes professional doorstep installation by certified technicians within 4 to 24 hours anywhere in Chennai, including Adambakkam, Velachery, Tambaram, OMR, and Anna Nagar.',
   },
   {
     id: 'faq-3',

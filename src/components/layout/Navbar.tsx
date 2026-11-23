@@ -22,10 +22,10 @@ interface NavLink {
 
 // 1. Exact Section Order as rendered on the Homepage
 const NAV_LINKS: NavLink[] = [
+   { name: "Brands", href: "#brands", id: "brands" },
   { name: "Categories", href: "#categories", id: "categories" },
   { name: "Products", href: "#products", id: "products" },
   { name: "Why Us", href: "#why-us", id: "why-us" },
-  { name: "Brands", href: "#brands", id: "brands" },
   { name: "Services", href: "#services", id: "services" },
   { name: "Purifier Quiz", href: "#quiz", id: "quiz" },
   { name: "Reviews", href: "#reviews", id: "reviews" },
@@ -317,10 +317,10 @@ export const Navbar: React.FC = () => {
               </div>
               <div className="pt-2 flex flex-col gap-2">
                 <a
-                  href="tel:+919444412345"
+                  href="tel:+916383321623"
                   className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#00D2FF]/15 border border-[#00D2FF]/30 text-[#00D2FF] font-semibold text-sm hover:bg-[#00D2FF]/25 transition-all"
                 >
-                  <PhoneCall className="w-4 h-4 text-[#00D2FF]" /> Chennai Helpline: +91 94444 12345
+                  <PhoneCall className="w-4 h-4 text-[#00D2FF]" /> Chennai Helpline: +91-6383321623
                 </a>
                 <a
                   href="#products"
