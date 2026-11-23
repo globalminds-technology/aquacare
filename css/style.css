@@ -1,0 +1,359 @@
+:root {
+  --primary-cyan: #00d2ff;
+  --primary-blue: #0066ff;
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-pill: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #030e1a;
+  font-family: var(--font-main);
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fullscreen Universe */
+.water-universe {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Clean Water Background (The Pinterest Water Theme) */
+.water-theme-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/water-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: contrast(1.08) brightness(1.03) saturate(1.1);
+  image-rendering: -webkit-optimize-contrast;
+  z-index: 1;
+  transition: filter 0.6s ease;
+}
+
+/* Blur & Dim water slightly when Brands Showcase is active */
+.water-universe.brands-active .water-theme-bg {
+  filter: contrast(1.02) brightness(0.65) blur(10px);
+}
+
+/* Interactive Water Ripple Canvas Layer */
+#water-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: auto;
+  cursor: pointer;
+  mix-blend-mode: screen;
+}
+
+/* Floating 3D Bubbles Container */
+#bubbles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 30%, rgba(0, 210, 255, 0.25) 65%, rgba(0, 136, 255, 0.5) 100%);
+  box-shadow: 
+    inset 0 0 10px rgba(255, 255, 255, 0.85),
+    inset -2px -2px 6px rgba(0, 180, 255, 0.5),
+    0 4px 16px rgba(0, 80, 160, 0.35);
+  backdrop-filter: blur(1.5px);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: 22%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  filter: blur(0.5px);
+}
+
+.bubble:hover {
+  transform: scale(1.35);
+}
+
+.bubble.pop {
+  animation: bubblePop 0.22s forwards ease-out;
+}
+
+@keyframes bubblePop {
+  0% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; filter: blur(4px); }
+}
+
+/* Floating Liquid Glass Navbar Container */
+.floating-navbar-wrapper {
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 100%;
+  max-width: 780px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.4s ease;
+}
+
+.navbar-pill-box {
+  position: relative;
+  width: 100%;
+  max-width: 755px;
+  height: 66px;
+  border-radius: var(--radius-pill);
+  box-shadow: 
+    0 16px 40px -10px rgba(0, 15, 35, 0.75),
+    0 0 30px rgba(0, 210, 255, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+.navbar-pill-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  filter: contrast(1.05) brightness(1.02);
+}
+
+.navbar-hotspots {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.nav-hotspot {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  transition: all 0.25s ease;
+}
+
+.nav-hotspot:hover {
+  background: rgba(0, 210, 255, 0.18);
+  border-color: rgba(0, 210, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.4);
+}
+
+#nav-hotspot-logo {
+  left: 2%;
+  width: 32%;
+}
+
+#nav-hotspot-brands {
+  left: 36%;
+  width: 12%;
+}
+
+#nav-hotspot-solutions {
+  left: 49%;
+  width: 12%;
+}
+
+#nav-hotspot-stores {
+  left: 62%;
+  width: 10%;
+}
+
+#nav-hotspot-consultation {
+  left: 73%;
+  width: 25%;
+}
+
+/* Brands Showcase Fullscreen Overlay View */
+.brands-showcase-view {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.94);
+  transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.brands-showcase-view.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.brands-image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brands-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.06) brightness(1.02);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Interactive hotspots on Brands Showcase */
+.brands-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.brands-hotspot-btn {
+  position: absolute;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.brands-hotspot-btn:hover {
+  background: rgba(0, 210, 255, 0.2);
+  border-color: rgba(0, 210, 255, 0.7);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+  transform: scale(1.04);
+}
+
+#btn-brands-back {
+  top: 4.5%;
+  left: 26%;
+  width: 14%;
+  height: 6.2%;
+}
+
+#btn-brands-prev {
+  top: 53.5%;
+  left: 1.4%;
+  width: 3.5%;
+  height: 6.5%;
+  border-radius: 50%;
+}
+
+#btn-brands-next {
+  top: 53.5%;
+  left: 95.1%;
+  width: 3.5%;
+  height: 6.5%;
+  border-radius: 50%;
+}
+
+#btn-brands-explore {
+  top: 71.8%;
+  left: 26.5%;
+  width: 13.8%;
+  height: 6.2%;
+}
+
+/* Floating Return / Close Pill */
+.close-brands-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  background: rgba(3, 17, 34, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 210, 255, 0.45);
+  color: #c4ecff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.close-brands-btn:hover {
+  background: rgba(0, 210, 255, 0.25);
+  color: #ffffff;
+  border-color: rgba(0, 210, 255, 0.8);
+  box-shadow: 0 12px 35px rgba(0, 210, 255, 0.45);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Welcome Floating Tip */
+.hero-welcome-tip {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(3, 17, 34, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.2);
+  font-size: 0.86rem;
+  color: #c4ebff;
+  pointer-events: none;
+  animation: tipFade 8s forwards;
+}
+
+.water-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00ffcc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+@keyframes tipFade {
+  0% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
