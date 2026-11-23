@@ -134,7 +134,7 @@ export const BrandShowcase: React.FC = () => {
       <div className="relative z-20 text-center max-w-2xl mx-auto pt-1">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00B8E6]/10 border border-[#00B8E6]/30 text-[#00D2FF] text-xs font-bold uppercase tracking-widest shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF] animate-ping" />
-          AUTHORISED BRAND SHOWCASE
+          03 — AUTHORISED BRAND SHOWCASE
         </span>
       </div>
 

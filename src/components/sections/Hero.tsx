@@ -72,8 +72,8 @@ export const Hero: React.FC = () => {
           {/* 4. Interactive Hotspots with Smooth Hover Glowing Feedback */}
           {/* Top-Left: Chennai Destination Pill */}
           <a
-            href="#categories"
-            title="Explore Chennai Purifier Categories"
+            href="#brands"
+            title="Explore Authorised Brands"
             className="absolute z-20 rounded-full transition-all duration-300 hover:ring-2 hover:ring-[#00D2FF] hover:bg-[#00D2FF]/15 cursor-pointer"
             style={{
               left: "4.15%",

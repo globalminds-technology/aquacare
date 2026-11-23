@@ -20,17 +20,17 @@ export default function HomePage() {
       <Hero />
       <TrustBenefits />
 
-      {/* 03 — Explore Water Purifiers (Interactive Category Cards) */}
+      {/* 03 — Shop by Brand (Authorised Brand Showcase directly below Hero) */}
+      <BrandShowcase />
+
+      {/* 04 — Explore Water Purifiers (Interactive Category Cards) */}
       <Categories />
 
-      {/* 04 — Featured Products (Best-Selling Purifiers with Add-to-Cart) */}
+      {/* 05 — Featured Products (Best-Selling Purifiers with Add-to-Cart) */}
       <FeaturedProducts />
 
-      {/* 05 — Why Aqua Care? (Price Advantage + Pure Water Glass Splash) */}
+      {/* 06 — Why Aqua Care? (Price Advantage + Pure Water Glass Splash) */}
       <WhyChoose />
-
-      {/* 06 — Shop by Brand (Clutch Cards Layout) */}
-      <BrandShowcase />
 
       {/* 07 — Installation & Services (Services Grid + Certified Technician) */}
       <Services />

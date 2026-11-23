@@ -47,7 +47,7 @@ export const FeaturedProducts: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#00D2FF] mb-1">
-              <span>FEATURED PRODUCTS</span>
+              <span>05 — FEATURED PRODUCTS</span>
             </div>
             <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-white">
               Best-Selling Water Purifiers

@@ -77,7 +77,7 @@ export const Categories: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-[#00D2FF]">
-              03 — EXPLORE WATER PURIFIERS
+              04 — EXPLORE WATER PURIFIERS
             </span>
             <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-white mt-1">
               Shop by Purifier Type
