@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, Sparkles, CheckCircle2, ShieldCheck, Award, Droplets } from "lucide-react";
-import { HeroCanvas } from "./HeroCanvas";
 
 export const Hero: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -28,9 +27,6 @@ export const Hero: React.FC = () => {
       {/* Soft Ambient Cyan Lighting behind Purifier Showcase */}
       <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#00D2FF]/12 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#0077D9]/10 rounded-full blur-[120px] pointer-events-none" />
-
-      {/* Dynamic Water Animation Canvas */}
-      <HeroCanvas />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
