@@ -8,7 +8,7 @@ export const CATEGORIES = [
     name: "RO Water Purifiers",
     slug: "ro-purifiers",
     description: "Reverse Osmosis for high TDS groundwater & borewell water",
-    image: "/images/categories/ro-filters.png",
+    cardImage: "/images/categories/ro_category_card.webp",
     itemCount: 24,
     cta: "Explore RO Purifiers",
   },
@@ -17,7 +17,7 @@ export const CATEGORIES = [
     name: "UV Water Purifiers",
     slug: "uv-purifiers",
     description: "Ultra Violet disinfection killing 99.99% bacteria & viruses",
-    image: "/images/categories/uv-purifier.png",
+    cardImage: "/images/categories/uv_category_card.webp",
     itemCount: 18,
     cta: "Explore UV Purifiers",
   },
@@ -26,7 +26,7 @@ export const CATEGORIES = [
     name: "UF Purifiers",
     slug: "uf-purifiers",
     description: "Ultra Filtration without electricity, retaining natural minerals",
-    image: "/images/categories/uf.webp",
+    cardImage: "/images/categories/uf_category_card.webp",
     itemCount: 12,
     cta: "Explore UF Purifiers",
   },
@@ -35,7 +35,7 @@ export const CATEGORIES = [
     name: "Alkaline Purifiers",
     slug: "alkaline-purifiers",
     description: "Active hydrogen & mineral cartridge for pH 8.5+ hydration",
-    image: "/images/categories/alkaline.webp",
+    cardImage: "/images/categories/alkaline_category_card.webp",
     itemCount: 15,
     cta: "Explore Alkaline",
   },
@@ -44,7 +44,7 @@ export const CATEGORIES = [
     name: "Water Dispensers",
     slug: "water-dispensers",
     description: "Instant hot, ambient & ice-cold purified water for modern spaces",
-    image: "/images/categories/dispenser.webp",
+    cardImage: "/images/categories/dispenser_category_card.webp",
     itemCount: 9,
     cta: "Explore Dispensers",
   },
@@ -53,7 +53,7 @@ export const CATEGORIES = [
     name: "Filters & Spares",
     slug: "filters-accessories",
     description: "Original sediment, carbon & mineral booster cartridges",
-    image: "/images/categories/filters.webp",
+    cardImage: "/images/categories/filters_category_card.webp",
     itemCount: 32,
     cta: "Explore Spares",
   },
@@ -96,39 +96,27 @@ export const Categories: React.FC = () => {
           </a>
         </div>
 
-        {/* 6 Category Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+        {/* 6 Category Cards Grid - Exactly matching the user's uploaded mockup */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 lg:gap-6">
           {CATEGORIES.map((cat) => (
             <a
               key={cat.id}
               href="#products"
-              className="group relative flex flex-col items-center text-center p-4 sm:p-5 rounded-3xl bg-[#031B36]/80 backdrop-blur-xl border border-[#00B8E6]/30 hover:border-[#00D2FF] hover:bg-[#032347]/90 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(0,210,255,0.25)] hover:-translate-y-1.5 transition-all duration-300"
+              className="group relative rounded-[26px] sm:rounded-[28px] overflow-hidden border-2 border-[#00B8E6]/85 hover:border-[#00D2FF] shadow-[0_0_20px_rgba(0,184,230,0.35)] hover:shadow-[0_0_40px_rgba(0,210,255,0.75)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300 flex flex-col cursor-pointer bg-[#02162E]"
             >
-              {/* Purifier Container */}
-              <div className="relative w-24 h-28 sm:w-28 sm:h-32 mb-3 transition-transform duration-300 group-hover:scale-105 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full bg-[#00D2FF]/10 blur-xl group-hover:bg-[#00D2FF]/25 transition-all" />
+              {/* Exact Category Card Image from user upload (477x756 High Res) */}
+              <div className="relative w-full aspect-[477/756] overflow-hidden">
                 <Image
-                  src={cat.image}
+                  src={cat.cardImage}
                   alt={cat.name}
                   fill
-                  sizes="(max-width: 768px) 112px, 128px"
-                  className="object-contain relative z-10"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   priority
                 />
+                {/* Subtle hover specular sheen */}
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
-
-              {/* Name & Count */}
-              <h3 className="font-sans font-bold text-sm text-white group-hover:text-[#00D2FF] transition-colors leading-tight relative z-10">
-                {cat.name}
-              </h3>
-              <span className="text-[11px] text-[#DDF5FF]/70 mt-1 relative z-10">
-                {cat.itemCount} Models
-              </span>
-
-              {/* Dynamic CTA */}
-              <span className="text-[11px] font-bold text-[#00D2FF] opacity-0 group-hover:opacity-100 transition-opacity mt-2 relative z-10">
-                {cat.cta} &rarr;
-              </span>
             </a>
           ))}
         </div>
