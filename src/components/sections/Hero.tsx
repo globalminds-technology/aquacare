@@ -149,18 +149,6 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Decorative Transparent Water-Wave Layer Across the Bottom Portion */}
-      <div className="absolute inset-x-0 bottom-0 w-full h-32 sm:h-44 pointer-events-none z-10 overflow-hidden">
-        <div className="relative w-full h-full opacity-60">
-          <Image
-            src="/images/water-wave.png"
-            alt="Flowing Water Wave Layer"
-            fill
-            className="object-cover object-bottom"
-          />
-        </div>
-      </div>
     </section>
   );
 };
