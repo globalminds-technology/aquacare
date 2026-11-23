@@ -262,6 +262,7 @@ export const BrandShowcase: React.FC = () => {
                       alt={brand.name}
                       fill
                       className="object-contain"
+                      priority
                     />
 
                     {/* Interactive CTA overlay when tall card is active */}

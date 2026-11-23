@@ -111,7 +111,9 @@ export const Categories: React.FC = () => {
                   src={cat.image}
                   alt={cat.name}
                   fill
+                  sizes="(max-width: 768px) 112px, 128px"
                   className="object-contain relative z-10"
+                  priority
                 />
               </div>
 
