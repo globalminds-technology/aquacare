@@ -29,27 +29,16 @@ export const HeroWaterFlow: React.FC<HeroWaterFlowProps> = ({ className = "" }) 
     resize();
     window.addEventListener("resize", resize);
 
-    // Particle systems
-    interface StreamParticle {
-      x: number;
-      y: number;
-      vy: number;
-      vx: number;
-      length: number;
-      width: number;
-      alpha: number;
-    }
-
+    // Particle & Wave interfaces
     interface Bubble {
-      x: number;
-      y: number;
+      xNorm: number;
+      yNorm: number;
       r: number;
       vy: number;
       wobbleSpeed: number;
       wobbleAmp: number;
       phase: number;
       alpha: number;
-      depth: number;
     }
 
     interface SplashDrop {
@@ -72,168 +61,295 @@ export const HeroWaterFlow: React.FC<HeroWaterFlowProps> = ({ className = "" }) 
       speed: number;
     }
 
-    interface Glint {
-      x: number;
-      y: number;
-      size: number;
-      phase: number;
+    interface StreamGlider {
+      yNorm: number;
       speed: number;
+      width: number;
+      length: number;
+      strand: number;
+      alpha: number;
     }
 
-    // Initialize Stream Particles (vertical water flow ribbons)
-    const streamParticles: StreamParticle[] = Array.from({ length: 38 }, () => ({
-      x: 0,
-      y: Math.random(),
-      vy: Math.random() * 0.04 + 0.025,
-      vx: (Math.random() - 0.5) * 0.002,
-      length: Math.random() * 0.08 + 0.03,
-      width: Math.random() * 3 + 1.2,
-      alpha: Math.random() * 0.6 + 0.3,
+    // High-speed water flow beads along the stream
+    const gliders: StreamGlider[] = Array.from({ length: 30 }, () => ({
+      yNorm: Math.random(),
+      speed: Math.random() * 0.038 + 0.026,
+      width: Math.random() * 2.8 + 1.2,
+      length: Math.random() * 0.09 + 0.04,
+      strand: Math.floor(Math.random() * 3),
+      alpha: Math.random() * 0.65 + 0.35,
     }));
 
-    // Initialize Rising Bubbles inside the Glass
-    const bubbles: Bubble[] = Array.from({ length: 55 }, () => ({
-      x: 0,
-      y: Math.random() * 0.35 + 0.58, // Inside glass region
+    // Rising effervescent bubbles inside the glass
+    const bubbles: Bubble[] = Array.from({ length: 65 }, () => ({
+      xNorm: Math.random() * 0.8 + 0.1,
+      yNorm: Math.random() * 0.38 + 0.56,
       r: Math.random() * 3.5 + 1.2,
-      vy: -(Math.random() * 0.0025 + 0.0012),
-      wobbleSpeed: Math.random() * 0.08 + 0.03,
-      wobbleAmp: Math.random() * 0.004 + 0.001,
+      vy: -(Math.random() * 0.0032 + 0.0016),
+      wobbleSpeed: Math.random() * 0.09 + 0.04,
+      wobbleAmp: Math.random() * 0.015 + 0.005,
       phase: Math.random() * Math.PI * 2,
-      alpha: Math.random() * 0.65 + 0.25,
-      depth: Math.random(),
+      alpha: Math.random() * 0.75 + 0.25,
     }));
 
-    // Dynamic Splashes & Ripples
     const splashDrops: SplashDrop[] = [];
     const ripples: Ripple[] = [];
 
-    // Glistening Light Stars on the Glass Rim & Water Droplets
-    const glints: Glint[] = [
-      { x: 0.722, y: 0.528, size: 4, phase: 0, speed: 0.04 },
-      { x: 0.792, y: 0.531, size: 5, phase: 1.5, speed: 0.035 },
-      { x: 0.758, y: 0.536, size: 6, phase: 3.0, speed: 0.05 },
-      { x: 0.706, y: 0.72, size: 3.5, phase: 2.1, speed: 0.03 },
-      { x: 0.808, y: 0.68, size: 4, phase: 4.2, speed: 0.045 },
-      { x: 0.757, y: 0.265, size: 5.5, phase: 0.8, speed: 0.06 }, // Spout tip glint
-    ];
-
-    let frame = 0;
+    let time = 0;
 
     const render = () => {
-      frame++;
+      time += 1;
       ctx.clearRect(0, 0, width, height);
 
-      // Coordinates in normalized percentages of the background image:
-      // Spout: x ~ 0.757, y ~ 0.265
-      // Water impact on glass: x ~ 0.757, y ~ 0.535
-      // Glass body: x from 0.705 to 0.810, y from 0.535 to 0.935
-      const spoutX = width * 0.757;
-      const spoutY = height * 0.265;
-      const impactX = width * 0.757;
-      const impactY = height * 0.535;
+      // -----------------------------------------------------------------------
+      // Exact CSS Object-Cover Alignment Math for 2048 x 982 reference image
+      // -----------------------------------------------------------------------
+      const imgW = 2048;
+      const imgH = 982;
+      const imgAspect = imgW / imgH;
+      const containerAspect = width / height;
 
-      const glassLeft = width * 0.705;
-      const glassRight = width * 0.81;
-      const glassTop = height * 0.535;
-      const glassBottom = height * 0.935;
+      let renderedW = 0;
+      let renderedH = 0;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      if (containerAspect > imgAspect) {
+        renderedW = width;
+        renderedH = width / imgAspect;
+        offsetX = 0;
+        offsetY = (height - renderedH) / 2;
+      } else {
+        renderedH = height;
+        renderedW = height * imgAspect;
+        // Desktop uses object-center, mobile uses object-right
+        if (width >= 1024) {
+          offsetX = (width - renderedW) / 2;
+        } else {
+          offsetX = width - renderedW;
+        }
+        offsetY = 0;
+      }
+
+      // Exact pixel coordinates mapped through object-cover
+      const spoutX = offsetX + 0.7568 * renderedW;
+      const spoutY = offsetY + 0.2648 * renderedH;
+      const impactX = offsetX + 0.7568 * renderedW;
+      const impactY = offsetY + 0.5346 * renderedH;
+      const glassLeft = offsetX + 0.7031 * renderedW;
+      const glassRight = offsetX + 0.8105 * renderedW;
+      const glassTop = offsetY + 0.5346 * renderedH;
+      const glassBottom = offsetY + 0.9369 * renderedH;
       const glassWidth = glassRight - glassLeft;
 
-      // -------------------------------------------------------------
-      // 1. ANIMATED DOWNWARD WATER JET (Spout to Glass)
-      // -------------------------------------------------------------
       const streamTop = spoutY;
       const streamBottom = impactY;
       const streamHeight = streamBottom - streamTop;
 
-      // 1A. Glowing Water Caustic Column Base
-      ctx.save();
-      const colGrad = ctx.createLinearGradient(spoutX - 8, streamTop, spoutX + 8, streamTop);
-      colGrad.addColorStop(0, "rgba(0, 210, 255, 0.08)");
-      colGrad.addColorStop(0.3, "rgba(221, 245, 255, 0.45)");
-      colGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.85)");
-      colGrad.addColorStop(0.7, "rgba(140, 232, 255, 0.55)");
-      colGrad.addColorStop(1, "rgba(0, 184, 230, 0.08)");
+      // Stream half-width scales proportionally with rendered image
+      const halfW = Math.max(5.5, renderedW * 0.0052);
 
-      ctx.fillStyle = colGrad;
-      // Slight oscillating fluid waist
-      const waistSway = Math.sin(frame * 0.08) * 1.5;
+      // -----------------------------------------------------------------------
+      // 1. DYNAMIC FLOWING WATER STREAM (Exact match to user's attached image)
+      //    Zero frozen shapes! Continuous downward flowing helical caustics & jet.
+      // -----------------------------------------------------------------------
+      const segments = 60;
+      const stepY = streamHeight / segments;
+      const flowSpeed = time * 0.32;
+
+      const leftEdge: { x: number; y: number }[] = [];
+      const rightEdge: { x: number; y: number }[] = [];
+      const strand1: { x: number; y: number }[] = [];
+      const strand2: { x: number; y: number }[] = [];
+      const strand3: { x: number; y: number }[] = [];
+
+      for (let i = 0; i <= segments; i++) {
+        const sy = streamTop + i * stepY;
+        const progress = i / segments;
+        const currentHalfW = halfW * (1.0 - progress * 0.12);
+
+        // Continuous downward helical phase
+        const phaseA = sy * 0.065 - flowSpeed;
+        const phaseB = phaseA + Math.PI;
+        const phaseC = sy * 0.045 - flowSpeed * 1.15 + 1.2;
+
+        const centerOffset = Math.sin(phaseA * 0.4) * 0.6;
+        const cx = spoutX + centerOffset;
+
+        leftEdge.push({ x: cx - currentHalfW, y: sy });
+        rightEdge.push({ x: cx + currentHalfW, y: sy });
+
+        // Internal twisting liquid caustics (double-helix refraction as in user photo)
+        strand1.push({ x: cx + Math.sin(phaseA) * (currentHalfW * 0.65), y: sy });
+        strand2.push({ x: cx + Math.sin(phaseB) * (currentHalfW * 0.65), y: sy });
+        strand3.push({ x: cx + Math.sin(phaseC) * (currentHalfW * 0.35), y: sy });
+      }
+
+      // 1B. Moving Fluid Water Body Fill
+      ctx.save();
+      const waveOffset = (time * 9) % 45;
+      const streamGrad = ctx.createLinearGradient(0, streamTop + waveOffset, 0, streamTop + waveOffset + 45);
+      streamGrad.addColorStop(0, "rgba(255, 255, 255, 0.45)");
+      streamGrad.addColorStop(0.25, "rgba(180, 240, 255, 0.75)");
+      streamGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
+      streamGrad.addColorStop(0.75, "rgba(140, 230, 255, 0.65)");
+      streamGrad.addColorStop(1, "rgba(255, 255, 255, 0.45)");
+
       ctx.beginPath();
-      ctx.moveTo(spoutX - 6, streamTop);
-      ctx.quadraticCurveTo(spoutX - 4 + waistSway, streamTop + streamHeight * 0.5, impactX - 7, streamBottom);
-      ctx.lineTo(impactX + 7, streamBottom);
-      ctx.quadraticCurveTo(spoutX + 4 + waistSway, streamTop + streamHeight * 0.5, spoutX + 6, streamTop);
+      ctx.moveTo(leftEdge[0].x, leftEdge[0].y);
+      for (let i = 1; i < leftEdge.length; i++) {
+        ctx.lineTo(leftEdge[i].x, leftEdge[i].y);
+      }
+      for (let i = rightEdge.length - 1; i >= 0; i--) {
+        ctx.lineTo(rightEdge[i].x, rightEdge[i].y);
+      }
       ctx.closePath();
+
+      ctx.fillStyle = "rgba(160, 230, 255, 0.35)";
+      ctx.fill();
+
+      ctx.shadowColor = "rgba(0, 210, 255, 0.85)";
+      ctx.shadowBlur = 9;
+      ctx.fillStyle = streamGrad;
+      ctx.globalAlpha = 0.55;
       ctx.fill();
       ctx.restore();
 
-      // 1B. Rushing Light Refractions running DOWN the water stream
+      // 1C. Outer Boundary Specular Light Lines
       ctx.save();
-      streamParticles.forEach((p) => {
-        p.y += p.vy;
-        if (p.y > 1) {
-          p.y = 0;
-          p.x = (Math.random() - 0.5) * 6;
-          p.alpha = Math.random() * 0.6 + 0.3;
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(leftEdge[0].x, leftEdge[0].y);
+      for (let i = 1; i < leftEdge.length; i++) {
+        ctx.lineTo(leftEdge[i].x, leftEdge[i].y);
+      }
+      ctx.stroke();
+
+      ctx.strokeStyle = "rgba(200, 245, 255, 0.85)";
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.moveTo(rightEdge[0].x, rightEdge[0].y);
+      for (let i = 1; i < rightEdge.length; i++) {
+        ctx.lineTo(rightEdge[i].x, rightEdge[i].y);
+      }
+      ctx.stroke();
+      ctx.restore();
+
+      // 1D. Twisting Internal Helical Refraction Strands (Exact Visual from Attached Image!)
+      ctx.save();
+      // Strand 1: Pure White Helical Cord
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.96)";
+      ctx.lineWidth = 1.6;
+      ctx.shadowColor = "rgba(255, 255, 255, 0.85)";
+      ctx.shadowBlur = 4;
+      ctx.beginPath();
+      ctx.moveTo(strand1[0].x, strand1[0].y);
+      for (let i = 1; i < strand1.length; i++) {
+        ctx.lineTo(strand1[i].x, strand1[i].y);
+      }
+      ctx.stroke();
+
+      // Strand 2: Counter-Twisting Cyan Cord
+      ctx.strokeStyle = "rgba(190, 245, 255, 0.9)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(strand2[0].x, strand2[0].y);
+      for (let i = 1; i < strand2.length; i++) {
+        ctx.lineTo(strand2[i].x, strand2[i].y);
+      }
+      ctx.stroke();
+
+      // Strand 3: Central Glistening Cord
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.78)";
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(strand3[0].x, strand3[0].y);
+      for (let i = 1; i < strand3.length; i++) {
+        ctx.lineTo(strand3[i].x, strand3[i].y);
+      }
+      ctx.stroke();
+      ctx.restore();
+
+      // 1E. High-Speed Liquid Specular Gliders Rushing Down the Stream
+      ctx.save();
+      gliders.forEach((g) => {
+        g.yNorm += g.speed;
+        if (g.yNorm > 1) {
+          g.yNorm = 0;
+          g.speed = Math.random() * 0.038 + 0.026;
+          g.alpha = Math.random() * 0.65 + 0.35;
+          g.strand = Math.floor(Math.random() * 3);
         }
 
-        const py = streamTop + p.y * streamHeight;
-        const px = spoutX + p.x + Math.sin(frame * 0.1 + p.y * 5) * 0.8;
-        const pLen = p.length * streamHeight;
+        const idx = Math.min(segments, Math.floor(g.yNorm * segments));
+        const refStrand = g.strand === 0 ? strand1 : g.strand === 1 ? strand2 : strand3;
+        const pt = refStrand[idx];
 
-        const pGrad = ctx.createLinearGradient(px, py, px, py + pLen);
-        pGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-        pGrad.addColorStop(0.5, `rgba(255, 255, 255, ${p.alpha})`);
-        pGrad.addColorStop(1, "rgba(140, 232, 255, 0)");
+        const glLen = g.length * streamHeight;
+        const glGrad = ctx.createLinearGradient(pt.x, pt.y, pt.x, pt.y + glLen);
+        glGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+        glGrad.addColorStop(0.5, `rgba(255, 255, 255, ${g.alpha})`);
+        glGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-        ctx.strokeStyle = pGrad;
-        ctx.lineWidth = p.width;
+        ctx.strokeStyle = glGrad;
+        ctx.lineWidth = g.width;
         ctx.lineCap = "round";
         ctx.beginPath();
-        ctx.moveTo(px, py);
-        ctx.lineTo(px, py + pLen);
+        ctx.moveTo(pt.x, pt.y);
+        ctx.lineTo(pt.x, pt.y + glLen);
         ctx.stroke();
       });
       ctx.restore();
 
-      // -------------------------------------------------------------
-      // 2. WATER IMPACT, FOAM & DANCING SPLASH DROPLETS
-      // -------------------------------------------------------------
-      // Spawn new splash droplets periodically at impact point
-      if (frame % 3 === 0) {
+      // 1F. Glowing Nozzle Exit Aperture
+      ctx.save();
+      const exitGrad = ctx.createRadialGradient(spoutX, spoutY + 1, 1, spoutX, spoutY + 1, halfW * 1.5);
+      exitGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+      exitGrad.addColorStop(0.5, "rgba(140, 230, 255, 0.7)");
+      exitGrad.addColorStop(1, "rgba(0, 184, 230, 0)");
+      ctx.fillStyle = exitGrad;
+      ctx.beginPath();
+      ctx.ellipse(spoutX, spoutY + 1, halfW * 1.4, 3, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 2. DYNAMIC IMPACT SPLASHES, EXPANDING RIPPLES & AERATION FOAM
+      // -----------------------------------------------------------------------
+      if (time % 3 === 0) {
         splashDrops.push({
-          x: impactX + (Math.random() - 0.5) * 12,
-          y: impactY + (Math.random() - 0.5) * 4,
+          x: impactX + (Math.random() - 0.5) * 10,
+          y: impactY + (Math.random() - 0.5) * 3,
           vx: (Math.random() - 0.5) * 2.2,
-          vy: -(Math.random() * 3.2 + 1.2),
-          r: Math.random() * 1.8 + 0.6,
-          alpha: 0.9,
+          vy: -(Math.random() * 3.5 + 1.2),
+          r: Math.random() * 1.6 + 0.6,
+          alpha: 0.95,
           life: 0,
-          maxLife: Math.floor(Math.random() * 22 + 14),
+          maxLife: Math.floor(Math.random() * 20 + 12),
         });
       }
 
-      // Spawn impact ripple rings
-      if (frame % 9 === 0) {
+      if (time % 8 === 0) {
         ripples.push({
           x: impactX,
-          y: impactY + 2,
-          rx: 3,
-          ry: 1,
-          alpha: 0.75,
-          speed: 0.7,
+          y: impactY + 1.5,
+          rx: 2.5,
+          ry: 0.8,
+          alpha: 0.8,
+          speed: 0.75,
         });
       }
 
-      // Render & Update Ripples
+      // Render Ripples
       ctx.save();
       for (let i = ripples.length - 1; i >= 0; i--) {
         const rip = ripples[i];
-        rip.rx += rip.speed * 1.4;
+        rip.rx += rip.speed * 1.5;
         rip.ry += rip.speed * 0.45;
-        rip.alpha *= 0.94;
+        rip.alpha *= 0.93;
 
-        if (rip.alpha < 0.02 || rip.rx > 38) {
+        if (rip.alpha < 0.02 || rip.rx > 36) {
           ripples.splice(i, 1);
           continue;
         }
@@ -246,66 +362,62 @@ export const HeroWaterFlow: React.FC<HeroWaterFlowProps> = ({ className = "" }) 
       }
       ctx.restore();
 
-      // Render & Update Splash Drops
+      // Render Splash Drops
       ctx.save();
       for (let i = splashDrops.length - 1; i >= 0; i--) {
         const drop = splashDrops[i];
         drop.x += drop.vx;
         drop.y += drop.vy;
-        drop.vy += 0.22; // Gravity pulling splash back into glass
+        drop.vy += 0.22;
         drop.life++;
         drop.alpha = 1 - drop.life / drop.maxLife;
 
-        if (drop.life >= drop.maxLife || drop.y > impactY + 8) {
+        if (drop.life >= drop.maxLife || drop.y > impactY + 6) {
           splashDrops.splice(i, 1);
           continue;
         }
 
-        ctx.fillStyle = `rgba(255, 255, 255, ${drop.alpha * 0.85})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${drop.alpha * 0.9})`;
         ctx.beginPath();
         ctx.arc(drop.x, drop.y, drop.r, 0, Math.PI * 2);
         ctx.fill();
       }
       ctx.restore();
 
-      // 2C. Impact Foam Plume
+      // Impact Foam Plume
       ctx.save();
-      const foamGrad = ctx.createRadialGradient(impactX, impactY, 2, impactX, impactY, 14);
-      foamGrad.addColorStop(0, "rgba(255, 255, 255, 0.75)");
-      foamGrad.addColorStop(0.4, "rgba(180, 240, 255, 0.4)");
+      const foamGrad = ctx.createRadialGradient(impactX, impactY, 1, impactX, impactY, 12);
+      foamGrad.addColorStop(0, "rgba(255, 255, 255, 0.85)");
+      foamGrad.addColorStop(0.4, "rgba(180, 245, 255, 0.45)");
       foamGrad.addColorStop(1, "rgba(0, 184, 230, 0)");
       ctx.fillStyle = foamGrad;
       ctx.beginPath();
-      ctx.ellipse(impactX, impactY, 14, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(impactX, impactY, 12, 4.5, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
 
-      // -------------------------------------------------------------
-      // 3. REALISTIC EFFERVESCENT BUBBLES INSIDE THE GLASS
-      // -------------------------------------------------------------
+      // -----------------------------------------------------------------------
+      // 3. REALISTIC 3D EFFERVESCENT BUBBLES RISING INSIDE THE GLASS
+      // -----------------------------------------------------------------------
       ctx.save();
       bubbles.forEach((b) => {
-        b.y += b.vy;
+        b.yNorm += b.vy;
         b.phase += b.wobbleSpeed;
 
-        // Reset bubble when reaching the top water surface in glass
-        if (b.y < 0.54) {
-          b.y = Math.random() * 0.35 + 0.58;
+        if (b.yNorm < 0.538) {
+          b.yNorm = Math.random() * 0.38 + 0.56;
           b.phase = Math.random() * Math.PI * 2;
-          b.depth = Math.random();
+          b.xNorm = Math.random() * 0.8 + 0.1;
         }
 
-        // Horizontal sinusoidal wobble as bubble rises
-        const wobbleX = Math.sin(b.phase) * (b.wobbleAmp * width);
-        // Center of glass column with horizontal variance
-        const bubbleX = glassLeft + (b.depth * 0.8 + 0.1) * glassWidth + wobbleX;
-        const bubbleY = b.y * height;
+        const wobbleX = Math.sin(b.phase) * (b.wobbleAmp * renderedW);
+        const bubbleX = glassLeft + b.xNorm * glassWidth + wobbleX;
+        const bubbleY = offsetY + b.yNorm * renderedH;
 
-        // Draw 3D Spherical Translucent Water Bubble with Specular Highlight
         ctx.beginPath();
         ctx.arc(bubbleX, bubbleY, b.r, 0, Math.PI * 2);
 
-        // Spherical radial gradient
+        // 3D Spherical Glint
         const bubbleGrad = ctx.createRadialGradient(
           bubbleX - b.r * 0.35,
           bubbleY - b.r * 0.35,
@@ -322,63 +434,8 @@ export const HeroWaterFlow: React.FC<HeroWaterFlowProps> = ({ className = "" }) 
         ctx.fillStyle = bubbleGrad;
         ctx.fill();
 
-        // Delicate outer rim sheen
-        ctx.strokeStyle = `rgba(255, 255, 255, ${b.alpha * 0.5})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${b.alpha * 0.55})`;
         ctx.lineWidth = 0.5;
-        ctx.stroke();
-      });
-      ctx.restore();
-
-      // -------------------------------------------------------------
-      // 4. REFRACTIVE LIQUID CAUSTICS DANCING IN GLASS
-      // -------------------------------------------------------------
-      ctx.save();
-      const causticIntensity = (Math.sin(frame * 0.05) + 1) * 0.5;
-      const causticGrad = ctx.createLinearGradient(glassLeft, glassTop, glassRight, glassBottom);
-      causticGrad.addColorStop(0, `rgba(0, 210, 255, ${0.04 + causticIntensity * 0.04})`);
-      causticGrad.addColorStop(0.5, `rgba(255, 255, 255, ${0.03 + causticIntensity * 0.05})`);
-      causticGrad.addColorStop(1, `rgba(0, 119, 217, ${0.05 + causticIntensity * 0.03})`);
-
-      ctx.fillStyle = causticGrad;
-      ctx.beginPath();
-      ctx.moveTo(glassLeft + 4, glassTop + 10);
-      ctx.lineTo(glassRight - 4, glassTop + 10);
-      ctx.lineTo(glassRight - 10, glassBottom - 8);
-      ctx.lineTo(glassLeft + 10, glassBottom - 8);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-
-      // -------------------------------------------------------------
-      // 5. GLISTENING LIGHT STARS (Glints on Glass Rim & Spout)
-      // -------------------------------------------------------------
-      ctx.save();
-      glints.forEach((g) => {
-        g.phase += g.speed;
-        const shimmer = (Math.sin(g.phase) + 1) * 0.5;
-        if (shimmer < 0.1) return;
-
-        const gx = g.x * width;
-        const gy = g.y * height;
-        const gSize = g.size * (0.6 + shimmer * 0.6);
-
-        // Draw 4-point light star
-        ctx.fillStyle = `rgba(255, 255, 255, ${shimmer * 0.9})`;
-        ctx.beginPath();
-        ctx.arc(gx, gy, gSize * 0.35, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.strokeStyle = `rgba(221, 245, 255, ${shimmer * 0.75})`;
-        ctx.lineWidth = 1;
-        // Horizontal ray
-        ctx.beginPath();
-        ctx.moveTo(gx - gSize, gy);
-        ctx.lineTo(gx + gSize, gy);
-        ctx.stroke();
-        // Vertical ray
-        ctx.beginPath();
-        ctx.moveTo(gx, gy - gSize);
-        ctx.lineTo(gx, gy + gSize);
         ctx.stroke();
       });
       ctx.restore();
@@ -401,4 +458,3 @@ export const HeroWaterFlow: React.FC<HeroWaterFlowProps> = ({ className = "" }) 
     />
   );
 };
-
