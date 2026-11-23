@@ -23,17 +23,16 @@ export const WhyChoose: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="py-24 bg-[#020D1A] relative overflow-hidden">
-      {/* 1. Theme Underwater Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image
-          src="/images/backgrounds/aqua-theme-bg.webp"
-          alt="Aqua Theme Background"
-          fill
-          className="object-cover object-center opacity-85"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020D1A]/80 via-[#020D1A]/55 to-[#020D1A]/85 pointer-events-none" />
-      </div>
+    <section
+      id="why-us"
+      className="py-24 relative overflow-hidden bg-[#020D1A]"
+      style={{
+        background: "radial-gradient(ellipse at 50% 30%, #062b54 0%, #03162a 55%, #020D1A 100%)",
+      }}
+    >
+      {/* Soft Ambient Cyan Lighting Glows (Clean Service style without wave effect) */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[650px] h-[450px] bg-[#00D2FF]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-[#0077D9]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Tag */}

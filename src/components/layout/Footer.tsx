@@ -17,7 +17,12 @@ import {
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-[#020D1A] text-[#DDF5FF] overflow-hidden pt-16 pb-8 border-t border-[#00B8E6]/30">
+    <footer
+      className="relative text-[#DDF5FF] overflow-hidden pt-16 pb-8 border-t border-[#00B8E6]/30 bg-[#020D1A]"
+      style={{
+        background: "radial-gradient(ellipse at 50% 10%, #062b54 0%, #03162a 55%, #020D1A 100%)",
+      }}
+    >
       {/* Decorative Wave Top SVG */}
       <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-[#0077D9] via-[#00B8E6] to-[#0077D9] opacity-80" />
 
