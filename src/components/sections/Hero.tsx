@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight, Phone, ShieldCheck, Truck, Star } from "lucide-react";
 import { HeroWaterFlow } from "./HeroWaterFlow";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export const Hero: React.FC = () => {
   return (
@@ -94,6 +95,11 @@ export const Hero: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* 4. Scroll to Explore Indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 hidden sm:block">
+        <ScrollIndicator targetId="brands" />
       </div>
     </section>
   );

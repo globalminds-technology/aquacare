@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Check, ShieldCheck, TrendingDown, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export const WhyChoose: React.FC = () => {
   const points = [
@@ -206,6 +207,9 @@ export const WhyChoose: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Scroll to Explore Next Section */}
+        <ScrollIndicator targetId="services" className="pt-12" />
       </div>
     </section>
   );

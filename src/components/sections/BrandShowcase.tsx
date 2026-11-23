@@ -6,12 +6,12 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowRight,
-  Mouse,
   ShieldCheck,
   Droplets,
   Zap,
   Sparkles,
 } from "lucide-react";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 interface BrandCard {
   id: string;
@@ -323,12 +323,7 @@ export const BrandShowcase: React.FC = () => {
         </div>
 
         {/* Single Clean Mouse Icon & "Scroll to Explore" */}
-        <div className="flex flex-col items-center text-[#DDF5FF]/60 text-xs gap-1 pt-0.5 animate-pulse">
-          <Mouse className="w-4 h-4 text-[#00D2FF]" />
-          <span className="text-[10px] tracking-widest uppercase font-semibold">
-            Scroll to Explore &darr;
-          </span>
-        </div>
+        <ScrollIndicator targetId="categories" className="pt-1" />
       </div>
     </section>
   );

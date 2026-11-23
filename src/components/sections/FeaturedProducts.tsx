@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Star, ShoppingCart, Check, Heart, Eye, ArrowRight, ShieldCheck } from "lucide-react";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { PRODUCTS } from "@/lib/data";
 import { useCartStore } from "@/lib/store";
 import { Product } from "@/lib/types";
@@ -198,6 +199,9 @@ export const FeaturedProducts: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Scroll to Explore Next Section */}
+        <ScrollIndicator targetId="why-us" className="pt-12" />
       </div>
     </section>
   );

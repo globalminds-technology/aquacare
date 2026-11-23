@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Wrench, Settings, Layers, Headphones, ShieldCheck, Check, Phone } from "lucide-react";
 import { SERVICES } from "@/lib/data";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   Wrench: <Wrench className="w-6 h-6 text-[#0077D9]" />,
@@ -129,6 +130,9 @@ export const Services: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Scroll to Explore Next Section */}
+        <ScrollIndicator targetId="quiz" className="pt-12" />
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Droplets, ArrowRight, ArrowLeft, Check, Sparkles, ShoppingCart, RefreshCcw } from "lucide-react";
 import { PRODUCTS } from "@/lib/data";
 import { useCartStore } from "@/lib/store";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 interface Answers {
   waterSource: string;
@@ -272,6 +273,9 @@ export const PurifierFinder: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* Scroll to Explore Next Section */}
+        <ScrollIndicator targetId="reviews-faq" className="pt-12" />
       </div>
     </section>
   );

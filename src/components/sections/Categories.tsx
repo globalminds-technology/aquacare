@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Filter } from "lucide-react";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export const CATEGORIES = [
   {
@@ -290,6 +291,9 @@ export const Categories: React.FC = () => {
             />
           ))}
         </div>
+
+        {/* Scroll to Explore Next Section */}
+        <ScrollIndicator targetId="products" className="pt-8" />
       </div>
     </section>
   );
