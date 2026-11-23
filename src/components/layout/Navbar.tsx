@@ -11,7 +11,6 @@ import {
   X,
   PhoneCall,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 
@@ -134,20 +133,20 @@ export const Navbar: React.FC = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "py-2 sm:py-2.5" : "py-3 sm:py-4"
+          isScrolled ? "py-2 sm:py-2.5" : "py-3 sm:py-3.5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          {/* Main Floating Pill Capsule */}
-          <div className="bg-white/95 backdrop-blur-2xl rounded-full px-3.5 sm:px-5 py-2 border border-[#DDF5FF] shadow-[0_8px_30px_rgba(0,184,230,0.12)] flex items-center justify-between gap-2 sm:gap-4 transition-all">
+          {/* Main Floating Capsule - Theme Colored (Deep Ocean Frosted Glass) */}
+          <div className="bg-[#021528]/85 backdrop-blur-2xl rounded-full px-3 sm:px-4 py-2 border border-[#00B8E6]/40 shadow-[0_8px_32px_rgba(0,184,230,0.22),inset_0_1px_1px_rgba(255,255,255,0.15)] flex items-center justify-between gap-1.5 sm:gap-2.5 transition-all">
             
-            {/* Left: Pure Brand Logo + ScrollTide Glass Tabs (Zero dead space!) */}
-            <div className="flex items-center gap-2 sm:gap-3 xl:gap-4 min-w-0">
-              {/* Brand Logo */}
-              <Link href="/" className="flex items-center group flex-shrink-0">
-                <div className="relative h-7 sm:h-8 xl:h-9 w-26 sm:w-32 xl:w-36 transition-transform duration-300 group-hover:scale-105">
+            {/* Left: Brand Logo (Enlarged) + ScrollTide Glass Tabs (Compact, Zero dead space) */}
+            <div className="flex items-center gap-2 xl:gap-3 min-w-0">
+              {/* Brand Logo - Enlarged Size */}
+              <Link href="/" className="flex items-center group flex-shrink-0 pl-1">
+                <div className="relative h-8 sm:h-9 xl:h-10 w-32 sm:w-38 xl:w-44 transition-transform duration-300 group-hover:scale-105">
                   <Image
-                    src="/brand/aqua-care-shop-logo.png"
+                    src="/brand/aqua-care-logo-dark-theme.png"
                     alt="Aqua Care Shop Logo"
                     fill
                     className="object-contain object-left"
@@ -156,19 +155,19 @@ export const Navbar: React.FC = () => {
                 </div>
               </Link>
 
-              {/* Subtle Elegant Vertical Divider */}
-              <div className="h-6 w-px bg-slate-200/80 hidden lg:block flex-shrink-0" />
+              {/* Thin subtle divider */}
+              <div className="h-5 w-px bg-white/15 hidden lg:block flex-shrink-0" />
 
               {/* ========================================================= */}
-              {/* ScrollTide Glass Tabs (c-glass-tabs)                      */}
-              {/* Liquid lens glides, refracts and settles over active tab  */}
+              {/* ScrollTide Glass Tabs (Theme Colored)                     */}
+              {/* Tight, snug spacing around Logo & FAQs                    */}
               {/* ========================================================= */}
               <nav
                 ref={navTrackRef}
                 onMouseLeave={() => setHoverTab(null)}
-                className="hidden lg:flex items-center relative p-1 rounded-full bg-slate-100/80 border border-slate-200/70 backdrop-blur-md shadow-inner"
+                className="hidden lg:flex items-center relative p-1 rounded-full bg-[#010E1C]/85 border border-[#00B8E6]/25 backdrop-blur-xl shadow-inner"
               >
-                {/* 1. The Liquid Glass Lens (Sliding Indicator) */}
+                {/* 1. The Liquid Glass Lens (Cyan Floating Indicator) */}
                 <div
                   className="absolute top-1 bottom-1 rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"
                   style={{
@@ -176,16 +175,14 @@ export const Navbar: React.FC = () => {
                     width: `${indicatorStyle.width}px`,
                     opacity: indicatorStyle.opacity,
                     background:
-                      "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(240,249,255,0.9) 100%)",
+                      "linear-gradient(135deg, rgba(0,210,255,0.28) 0%, rgba(0,119,217,0.35) 100%)",
                     boxShadow:
-                      "0 4px 14px rgba(0, 184, 230, 0.24), 0 1px 3px rgba(0, 119, 217, 0.12), inset 0 1px 1px rgba(255, 255, 255, 1)",
-                    border: "1px solid rgba(0, 184, 230, 0.35)",
+                      "0 0 18px rgba(0, 210, 255, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.45)",
+                    border: "1px solid rgba(0, 210, 255, 0.65)",
                   }}
                 >
                   {/* Specular Prism Glint */}
-                  <div className="absolute inset-x-2.5 top-0.5 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-[#00D2FF]/80 to-transparent" />
-                  {/* Subtle Underglow */}
-                  <div className="absolute inset-x-3 bottom-0 h-2 rounded-full bg-[#00D2FF]/20 blur-sm" />
+                  <div className="absolute inset-x-2.5 top-0.5 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-[#00D2FF] to-transparent" />
                 </div>
 
                 {/* 2. Interactive Navigation Options */}
@@ -204,8 +201,8 @@ export const Navbar: React.FC = () => {
                       onMouseEnter={() => setHoverTab(idx)}
                       className={`relative z-10 text-[11px] xl:text-xs font-semibold px-2.5 xl:px-3 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer select-none flex items-center gap-1 ${
                         isActive || isHovered
-                          ? "text-[#0077D9] font-bold"
-                          : "text-[#073B67]/75 hover:text-[#0077D9]"
+                          ? "text-white font-extrabold drop-shadow-[0_0_12px_rgba(0,210,255,0.85)]"
+                          : "text-[#DDF5FF]/75 hover:text-[#00D2FF]"
                       }`}
                     >
                       {link.name}
@@ -215,35 +212,35 @@ export const Navbar: React.FC = () => {
               </nav>
             </div>
 
-            {/* Right: Search, Account, Cart & Shop Now */}
+            {/* Right: Search, Account, Cart & Shop Now (Snug Spacing next to FAQs) */}
             <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
               {/* Search Toggle */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label="Search purifiers"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[#073B67] hover:text-[#0077D9] hover:bg-[#DDF5FF] transition-all"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#DDF5FF] hover:text-[#00D2FF] hover:bg-white/10 transition-all border border-transparent hover:border-[#00D2FF]/30"
               >
-                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Search className="w-4 h-4" />
               </button>
 
               {/* Login / User Account */}
               <button
                 onClick={() => setAccountModalOpen(true)}
                 aria-label="User account"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[#073B67] hover:text-[#0077D9] hover:bg-[#DDF5FF] transition-all"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#DDF5FF] hover:text-[#00D2FF] hover:bg-white/10 transition-all border border-transparent hover:border-[#00D2FF]/30"
               >
-                <User className="w-4 h-4 sm:w-5 sm:h-5" />
+                <User className="w-4 h-4" />
               </button>
 
               {/* Cart Drawer Toggle with Badge */}
               <button
                 onClick={toggleCart}
                 aria-label="View shopping cart"
-                className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#DDF5FF] text-[#0077D9] hover:bg-[#0077D9] hover:text-white transition-all shadow-sm"
+                className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/35 hover:bg-[#00D2FF] hover:text-[#020D1A] transition-all shadow-sm"
               >
-                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ShoppingCart className="w-4 h-4" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#0077D9] text-white text-[10px] font-bold w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                  <span className="absolute -top-1 -right-1 bg-[#00D2FF] text-[#020D1A] text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-md animate-pulse">
                     {cartCount}
                   </span>
                 )}
@@ -253,7 +250,7 @@ export const Navbar: React.FC = () => {
               <a
                 href="#products"
                 onClick={(e) => handleNavClick(e, "#products", 1)}
-                className="hidden sm:inline-flex items-center justify-center px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold text-white bg-gradient-to-r from-[#0077D9] to-[#00B8E6] hover:shadow-[0_0_20px_rgba(0,184,230,0.6)] hover:scale-105 active:scale-95 transition-all"
+                className="hidden sm:inline-flex items-center justify-center px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold text-[#020D1A] bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] hover:shadow-[0_0_20px_rgba(0,210,255,0.7)] hover:scale-105 active:scale-95 transition-all"
               >
                 Shop Now
               </a>
@@ -261,24 +258,24 @@ export const Navbar: React.FC = () => {
               {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden w-9 h-9 rounded-full flex items-center justify-center text-[#073B67] hover:bg-[#DDF5FF] ml-1"
+                className="lg:hidden w-8 h-8 rounded-full flex items-center justify-center text-[#DDF5FF] hover:bg-white/10 ml-0.5"
                 aria-label="Toggle navigation menu"
               >
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-[#00D2FF]" /> : <Menu className="w-5 h-5 text-white" />}
               </button>
             </div>
           </div>
 
-          {/* Quick Search Dropdown */}
+          {/* Quick Search Dropdown - Theme Styled */}
           {searchOpen && (
-            <div className="mt-3 p-3 bg-white/95 backdrop-blur-xl rounded-2xl shadow-aqua-md border border-[#DDF5FF] flex items-center gap-3 animate-in fade-in slide-in-from-top duration-200">
-              <Search className="w-5 h-5 text-[#0077D9]" />
+            <div className="mt-2.5 p-3 bg-[#021528]/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-[#00B8E6]/40 flex items-center gap-3 animate-in fade-in slide-in-from-top duration-200">
+              <Search className="w-5 h-5 text-[#00D2FF]" />
               <input
                 type="text"
                 placeholder="Search RO Purifiers, Kent, AO Smith, Alkaline..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-none outline-none text-sm text-[#073B67] placeholder:text-gray-400"
+                className="w-full bg-transparent border-none outline-none text-sm text-white placeholder:text-[#DDF5FF]/40"
                 autoFocus
               />
               <a
@@ -287,13 +284,13 @@ export const Navbar: React.FC = () => {
                   handleNavClick(e, "#products", 1);
                   setSearchOpen(false);
                 }}
-                className="px-4 py-1.5 rounded-lg bg-[#0077D9] text-white text-xs font-medium hover:bg-[#00B8E6] transition-colors"
+                className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#00D2FF] to-[#0077D9] text-[#020D1A] font-bold text-xs hover:shadow-[0_0_15px_rgba(0,210,255,0.6)] transition-all"
               >
                 Find
               </a>
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-[#DDF5FF]/60 hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -301,11 +298,11 @@ export const Navbar: React.FC = () => {
           )}
         </div>
 
-        {/* Mobile Navigation Drawer with Ordered Sections & Glass Styling */}
+        {/* Mobile Navigation Drawer with Ordered Sections & Theme Glass Styling */}
         {mobileMenuOpen && (
           <div className="lg:hidden max-w-7xl mx-auto px-3 sm:px-6 mt-2">
-            <div className="bg-white/95 backdrop-blur-2xl rounded-3xl border border-[#DDF5FF] shadow-xl p-5 space-y-3 animate-in slide-in-from-top duration-300">
-              <div className="grid grid-cols-2 gap-2 pb-3 border-b border-[#DDF5FF]">
+            <div className="bg-[#021528]/95 backdrop-blur-2xl rounded-3xl border border-[#00B8E6]/40 shadow-2xl p-5 space-y-3 animate-in slide-in-from-top duration-300">
+              <div className="grid grid-cols-2 gap-2 pb-3 border-b border-white/10">
                 {NAV_LINKS.map((link, idx) => {
                   const isActive = activeTab === idx;
                   return (
@@ -315,8 +312,8 @@ export const Navbar: React.FC = () => {
                       onClick={(e) => handleNavClick(e, link.href, idx)}
                       className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                         isActive
-                          ? "bg-[#DDF5FF] text-[#0077D9] font-bold shadow-sm"
-                          : "text-[#073B67] hover:bg-[#DDF5FF]/50"
+                          ? "bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 font-bold shadow-sm"
+                          : "text-[#DDF5FF]/80 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       {link.name}
@@ -327,14 +324,14 @@ export const Navbar: React.FC = () => {
               <div className="pt-2 flex flex-col gap-2">
                 <a
                   href="tel:+919444412345"
-                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#DDF5FF] text-[#0077D9] font-medium text-sm"
+                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#00D2FF]/15 border border-[#00D2FF]/30 text-[#00D2FF] font-semibold text-sm hover:bg-[#00D2FF]/25 transition-all"
                 >
-                  <PhoneCall className="w-4 h-4" /> Chennai Helpline: +91 94444 12345
+                  <PhoneCall className="w-4 h-4 text-[#00D2FF]" /> Chennai Helpline: +91 94444 12345
                 </a>
                 <a
                   href="#products"
                   onClick={(e) => handleNavClick(e, "#products", 1)}
-                  className="text-center py-2.5 rounded-xl bg-gradient-to-r from-[#0077D9] to-[#00B8E6] text-white font-semibold text-sm"
+                  className="text-center py-2.5 rounded-xl bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] text-[#020D1A] font-extrabold text-sm shadow-[0_0_20px_rgba(0,210,255,0.6)]"
                 >
                   Explore Water Purifiers
                 </a>
@@ -344,32 +341,32 @@ export const Navbar: React.FC = () => {
         )}
       </header>
 
-      {/* Account / Login Modal */}
+      {/* Account / Login Modal - Theme Styled */}
       {accountModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-[#DDF5FF] relative animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
+          <div className="bg-[#031B38] text-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-[#00B8E6]/40 relative animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setAccountModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+              className="absolute top-4 right-4 text-[#DDF5FF]/60 hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
             <div className="flex flex-col items-center text-center">
-              <div className="w-14 h-14 rounded-full bg-[#DDF5FF] text-[#0077D9] flex items-center justify-center mb-3">
+              <div className="w-14 h-14 rounded-full bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(0,210,255,0.3)]">
                 <ShieldCheck className="w-8 h-8" />
               </div>
-              <h3 className="font-sans font-bold text-lg text-[#073B67]">Aqua Care Login</h3>
-              <p className="text-xs text-gray-500 mt-1 mb-4">
+              <h3 className="font-sans font-bold text-lg text-white">Aqua Care Login</h3>
+              <p className="text-xs text-[#DDF5FF]/70 mt-1 mb-4">
                 Access your orders, warranty certificates, and technician service bookings.
               </p>
               <input
                 type="tel"
                 placeholder="Enter 10-digit Mobile Number"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#DDF5FF] text-sm focus:border-[#0077D9] outline-none mb-3"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#00B8E6]/30 bg-[#010E1C] text-white text-sm focus:border-[#00D2FF] outline-none mb-3 placeholder:text-[#DDF5FF]/40"
               />
               <button
                 onClick={() => setAccountModalOpen(false)}
-                className="w-full py-2.5 rounded-xl bg-[#0077D9] text-white text-sm font-semibold hover:bg-[#00B8E6] transition-colors"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#00D2FF] via-[#00B8E6] to-[#0077D9] text-[#020D1A] text-sm font-extrabold hover:shadow-[0_0_20px_rgba(0,210,255,0.6)] transition-all"
               >
                 Request OTP Login
               </button>
